@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import BookmarkList from './components/BookmarkList/BookmarkList'
 import styles from './App.module.scss'
+import { update } from 'immutable'
 
 
 export default function App(){
@@ -33,11 +34,61 @@ export default function App(){
             console.error(error)
         }
     }
+
+    // UpdateBookmark
+    const updateBookmark = async (id) => {
+        const body = { ...newBookmark }
+        try {
+            const response = await fetch(`/api/bookmarks/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            })
+            const updatedBookmark = await response.json()
+            const updatedBookmarks = bookmarks.map(bookmark => {
+                if (bookmark._id === id) {
+                    return updatedBookmark
+                }
+                return bookmark;
+            });
+            setBookmarks(updatedBookmarks)
+            setNewBookmark({ title: '', url: '' })
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    //editBookmarks
+    const editBookmark = async () => {
+        const body = {...newBookmark}
+        const index = bookmarks.findIndex((bookmark) => bookmark._id === id)
+        try {
+            const response = await fetch(`/api/bookmarks/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            })
+            const createdBookmark = await response.json()
+            const bookmarksCopy = [createdBookmark,...bookmarks]
+            setBookmarks(bookmarksCopy)
+            setNewBookmark({
+                title: '',
+                url: ''
+            })
+        } catch (error) {   
+            console.error(error)
+        }
+    }
+
     //deleteBookmarks
     const deleteBookmark = async (id) => {
         try {
-            const index = completedBookmarks.findIndex((bookmark) => bookmark._id === id)
-            const completedBookmarksCopy = [...completedBookmarks]
+            const index = bookmarks.findIndex((bookmark) => bookmark._id === id)
+            const bookmarksCopy = [...bookmarks]
             const response = await fetch(`/api/bookmarks/${id}`, {
                 method: 'DELETE',
                 headers: {
@@ -45,8 +96,8 @@ export default function App(){
                 }
             })
             await response.json()
-            completedBookmarksCopy.splice(index, 1)
-            setCompletedBookmarks(completedBookmarksCopy)
+            bookmarksCopy.splice(index, 1)
+            setBookmarks(bookmarksCopy)
         } catch (error) {
             console.error(error)
         }
@@ -93,13 +144,14 @@ export default function App(){
         <>
 			
             <div className={styles.banner}>
-                <h1>TeeterTot's Bookmarks</h1>
+                <h1>Tyler's Bookmarks</h1>
             </div>
             <BookmarkList
             newBookmark={newBookmark}
             setNewBookmark={setNewBookmark}
             createBookmark={createBookmark}
             bookmarks={bookmarks}
+            updateBookmark={updateBookmark}
             moveToCompleted={moveToCompleted}
             completedBookmarks={completedBookmarks}
             deleteBookmark={deleteBookmark}

@@ -6,10 +6,15 @@ export default function BookmarkList ({
     createBookmark, 
     setNewBookmark, 
     bookmarks,
-    completedBookmarks,
-    moveToCompleted,
     deleteBookmark
 }){
+
+    function handleCreateBookmark(){
+        if (newBookmark.title && newBookmark.url && newBookmark.url !== 'http://' && newBookmark.url !== 'https://') {
+            createBookmark();
+        }
+    }
+
     return(
         <div className={styles.bookmarklist}>
             Website Title:<input 
@@ -20,33 +25,24 @@ export default function BookmarkList ({
                 setNewBookmark({...newBookmark, title: e.target.value})
             }} 
             onKeyDown={(e) => {
-                e.key === 'Enter' && createBookmark()
+                e.key === 'Enter' && handleCreateBookmark()
             }}
             />
             URL:<input 
             className={styles.input}
             type="text" 
-            value={newBookmark.url} 
+            value={newBookmark.url ? newBookmark.url : 'http://'}
             onChange={(e) => {
                 setNewBookmark({...newBookmark, url: e.target.value})
             }} 
             onKeyDown={(e) => {
-                e.key === 'Enter' && createBookmark()
+                e.key === 'Enter' && handleCreateBookmark()
             }}
             />
              <h3>Bookmarks</h3>
         {bookmarks.map(bookmark => (
             <Bookmark 
                 key={bookmark._id} 
-                bookmark={bookmark}
-                buttonAction={moveToCompleted}
-                buttonText={'Complete'}
-            />
-        ))}
-        <h3>Completed Bookmarks</h3>
-        {completedBookmarks.map(bookmark =>(
-            <Bookmark
-                key={bookmark._id}
                 bookmark={bookmark}
                 buttonAction={deleteBookmark}
                 buttonText={'Delete'}

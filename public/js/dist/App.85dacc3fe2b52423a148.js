@@ -15,12 +15,15 @@
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_BookmarkList_BookmarkList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/BookmarkList/BookmarkList */ "./src/components/BookmarkList/BookmarkList.js");
 /* harmony import */ var _App_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.module.scss */ "./src/App.module.scss");
+/* harmony import */ var immutable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! immutable */ "./node_modules/immutable/dist/immutable.js");
+/* harmony import */ var immutable__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(immutable__WEBPACK_IMPORTED_MODULE_3__);
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
 function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
 
 
 
@@ -54,11 +57,64 @@ function App() {
       console.error(error);
     }
   };
+
+  // UpdateBookmark
+  const updateBookmark = async id => {
+    const body = _objectSpread({}, newBookmark);
+    try {
+      const response = await fetch("/api/bookmarks/".concat(id), {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+      const updatedBookmark = await response.json();
+      const updatedBookmarks = bookmarks.map(bookmark => {
+        if (bookmark._id === id) {
+          return updatedBookmark;
+        }
+        return bookmark;
+      });
+      setBookmarks(updatedBookmarks);
+      setNewBookmark({
+        title: '',
+        url: ''
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  //editBookmarks
+  const editBookmark = async () => {
+    const body = _objectSpread({}, newBookmark);
+    const index = bookmarks.findIndex(bookmark => bookmark._id === id);
+    try {
+      const response = await fetch("/api/bookmarks/".concat(id), {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+      const createdBookmark = await response.json();
+      const bookmarksCopy = [createdBookmark, ...bookmarks];
+      setBookmarks(bookmarksCopy);
+      setNewBookmark({
+        title: '',
+        url: ''
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   //deleteBookmarks
   const deleteBookmark = async id => {
     try {
-      const index = completedBookmarks.findIndex(bookmark => bookmark._id === id);
-      const completedBookmarksCopy = [...completedBookmarks];
+      const index = bookmarks.findIndex(bookmark => bookmark._id === id);
+      const bookmarksCopy = [...bookmarks];
       const response = await fetch("/api/bookmarks/".concat(id), {
         method: 'DELETE',
         headers: {
@@ -66,8 +122,8 @@ function App() {
         }
       });
       await response.json();
-      completedBookmarksCopy.splice(index, 1);
-      setCompletedBookmarks(completedBookmarksCopy);
+      bookmarksCopy.splice(index, 1);
+      setBookmarks(bookmarksCopy);
     } catch (error) {
       console.error(error);
     }
@@ -112,11 +168,12 @@ function App() {
   }, []);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: _App_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].banner
-  }, /*#__PURE__*/React.createElement("h1", null, "TeeterTot's Bookmarks")), /*#__PURE__*/React.createElement(_components_BookmarkList_BookmarkList__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, /*#__PURE__*/React.createElement("h1", null, "Tyler's Bookmarks")), /*#__PURE__*/React.createElement(_components_BookmarkList_BookmarkList__WEBPACK_IMPORTED_MODULE_1__["default"], {
     newBookmark: newBookmark,
     setNewBookmark: setNewBookmark,
     createBookmark: createBookmark,
     bookmarks: bookmarks,
+    updateBookmark: updateBookmark,
     moveToCompleted: moveToCompleted,
     completedBookmarks: completedBookmarks,
     deleteBookmark: deleteBookmark
@@ -145,7 +202,10 @@ function Bookmark(_ref) {
   } = _ref;
   return /*#__PURE__*/React.createElement("div", {
     className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].bookmark
-  }, " ", bookmark.title, /*#__PURE__*/React.createElement("button", {
+  }, " ", /*#__PURE__*/React.createElement("a", {
+    target: "_blank",
+    href: bookmark.url
+  }, bookmark.title), /*#__PURE__*/React.createElement("button", {
     className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].button,
     onClick: () => buttonAction(bookmark._id)
   }, buttonText));
@@ -178,10 +238,13 @@ function BookmarkList(_ref) {
     createBookmark,
     setNewBookmark,
     bookmarks,
-    completedBookmarks,
-    moveToCompleted,
     deleteBookmark
   } = _ref;
+  function handleCreateBookmark() {
+    if (newBookmark.title && newBookmark.url && newBookmark.url !== 'http://' && newBookmark.url !== 'https://') {
+      createBookmark();
+    }
+  }
   return /*#__PURE__*/React.createElement("div", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].bookmarklist
   }, "Website Title:", /*#__PURE__*/React.createElement("input", {
@@ -194,26 +257,21 @@ function BookmarkList(_ref) {
       }));
     },
     onKeyDown: e => {
-      e.key === 'Enter' && createBookmark();
+      e.key === 'Enter' && handleCreateBookmark();
     }
   }), "URL:", /*#__PURE__*/React.createElement("input", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input,
     type: "text",
-    value: newBookmark.url,
+    value: newBookmark.url ? newBookmark.url : 'http://',
     onChange: e => {
       setNewBookmark(_objectSpread(_objectSpread({}, newBookmark), {}, {
         url: e.target.value
       }));
     },
     onKeyDown: e => {
-      e.key === 'Enter' && createBookmark();
+      e.key === 'Enter' && handleCreateBookmark();
     }
   }), /*#__PURE__*/React.createElement("h3", null, "Bookmarks"), bookmarks.map(bookmark => /*#__PURE__*/React.createElement(_Bookmark_Bookmark__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    key: bookmark._id,
-    bookmark: bookmark,
-    buttonAction: moveToCompleted,
-    buttonText: 'Complete'
-  })), /*#__PURE__*/React.createElement("h3", null, "Completed Bookmarks"), completedBookmarks.map(bookmark => /*#__PURE__*/React.createElement(_Bookmark_Bookmark__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: bookmark._id,
     bookmark: bookmark,
     buttonAction: deleteBookmark,
@@ -568,7 +626,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
@@ -714,9 +772,9 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_css-loader_dist_runtime_api_js-node_modules_css-loader_dist_runtime_sour-b53f7e"], () => (__webpack_require__("./src/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_css-loader_dist_runtime_api_js-node_modules_css-loader_dist_runtime_sour-0ab90a"], () => (__webpack_require__("./src/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.ec1c52b0695ef1be6753dd737b491d99.js.map
+//# sourceMappingURL=App.e963273f3c471521d7e68bd8497670b4.js.map
