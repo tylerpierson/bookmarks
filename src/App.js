@@ -57,7 +57,6 @@ export default function App(){
             const index = bookmarks.findIndex((bookmark) => bookmark._id === id)
             const bookmarksCopy = [...bookmarks]
             const subject = bookmarksCopy[index]
-            subject.completed = true 
             const response = await fetch(`/api/bookmarks/${id}`, {
                 method: 'PUT',
                 headers: {
@@ -66,8 +65,8 @@ export default function App(){
                 body: JSON.stringify(subject)
             })
             const updatedBookmark = await response.json()
-            const completedTDsCopy = [updatedBookmark, ...completedBookmarks]
-            setCompletedBookmarks(completedTDsCopy)
+            const completedBMsCopy = [updatedBookmark, ...completedBookmarks]
+            setCompletedBookmarks(completedBMsCopy)
             bookmarksCopy.splice(index, 1)
             setBookmarks(bookmarksCopy)
         } catch (error) {

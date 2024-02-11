@@ -12,12 +12,23 @@ export default function BookmarkList ({
 }){
     return(
         <div className={styles.bookmarklist}>
-            Add New Bookmark:<input 
+            Website Title:<input 
             className={styles.input}
             type="text" 
             value={newBookmark.title} 
             onChange={(e) => {
                 setNewBookmark({...newBookmark, title: e.target.value})
+            }} 
+            onKeyDown={(e) => {
+                e.key === 'Enter' && createBookmark()
+            }}
+            />
+            URL:<input 
+            className={styles.input}
+            type="text" 
+            value={newBookmark.url} 
+            onChange={(e) => {
+                setNewBookmark({...newBookmark, url: e.target.value})
             }} 
             onKeyDown={(e) => {
                 e.key === 'Enter' && createBookmark()

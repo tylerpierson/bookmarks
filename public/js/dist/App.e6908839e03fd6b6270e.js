@@ -78,7 +78,6 @@ function App() {
       const index = bookmarks.findIndex(bookmark => bookmark._id === id);
       const bookmarksCopy = [...bookmarks];
       const subject = bookmarksCopy[index];
-      subject.completed = true;
       const response = await fetch("/api/bookmarks/".concat(id), {
         method: 'PUT',
         headers: {
@@ -87,8 +86,8 @@ function App() {
         body: JSON.stringify(subject)
       });
       const updatedBookmark = await response.json();
-      const completedTDsCopy = [updatedBookmark, ...completedBookmarks];
-      setCompletedBookmarks(completedTDsCopy);
+      const completedBMsCopy = [updatedBookmark, ...completedBookmarks];
+      setCompletedBookmarks(completedBMsCopy);
       bookmarksCopy.splice(index, 1);
       setBookmarks(bookmarksCopy);
     } catch (error) {
@@ -185,13 +184,25 @@ function BookmarkList(_ref) {
   } = _ref;
   return /*#__PURE__*/React.createElement("div", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].bookmarklist
-  }, "Add New Bookmark:", /*#__PURE__*/React.createElement("input", {
+  }, "Website Title:", /*#__PURE__*/React.createElement("input", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input,
     type: "text",
     value: newBookmark.title,
     onChange: e => {
       setNewBookmark(_objectSpread(_objectSpread({}, newBookmark), {}, {
         title: e.target.value
+      }));
+    },
+    onKeyDown: e => {
+      e.key === 'Enter' && createBookmark();
+    }
+  }), "URL:", /*#__PURE__*/React.createElement("input", {
+    className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input,
+    type: "text",
+    value: newBookmark.url,
+    onChange: e => {
+      setNewBookmark(_objectSpread(_objectSpread({}, newBookmark), {}, {
+        url: e.target.value
       }));
     },
     onKeyDown: e => {
@@ -708,4 +719,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.fb996b04d04cfcb6168077bb5c542362.js.map
+//# sourceMappingURL=App.ec1c52b0695ef1be6753dd737b491d99.js.map
