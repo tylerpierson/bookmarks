@@ -8,7 +8,7 @@ export default function App(){
     const [completedBookmarks, setCompletedBookmarks] = useState([])
     const [newBookmark, setNewBookmark] = useState({
         title: '',
-        completed: false
+        url: ''
     })
 
     //createBookmarks
@@ -27,7 +27,7 @@ export default function App(){
             setBookmarks(bookmarksCopy)
             setNewBookmark({
                 title: '',
-                completed: false
+                url: ''
             })
         } catch (error) {   
             console.error(error)
@@ -94,8 +94,7 @@ export default function App(){
         <>
 			
             <div className={styles.banner}>
-                <h1>The World Famous Big Poppa Code React Starter Kit</h1>
-              <img src='https://i.imgur.com/5WXigZL.jpg'/>
+                <h1>TeeterTot's Bookmarks</h1>
             </div>
             <BookmarkList
             newBookmark={newBookmark}
