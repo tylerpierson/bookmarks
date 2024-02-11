@@ -1,4 +1,4 @@
-const Todo = require('../../models/todo')
+const Bookmark = require('../../models/bookmark')
 
 
 module.exports = {
@@ -8,27 +8,27 @@ module.exports = {
     show,
     update,
     destroy,
-    jsonTodos,
-    jsonTodo
+    jsonBookmarks,
+    jsonBookmark
 }
 
-// jsonTodos jsonTodo
+// jsonBookmarks jsonBookmark
 // viewControllers
 
-function jsonTodo (_, res) {
-    res.json(res.locals.data.todo)
+function jsonBookmark (_, res) {
+    res.json(res.locals.data.bookmark)
 }
 
-function jsonTodos (_, res) {
-    res.json(res.locals.data.todos)
+function jsonBookmarks (_, res) {
+    res.json(res.locals.data.bookmarks)
 }
 
 /****** C - Create *******/
 async function create(req, res, next){
     try {
-        const todo = await Todo.create(req.body)
-        console.log(todo)
-        res.locals.data.todo = todo
+        const bookmark = await Bookmark.create(req.body)
+        console.log(bookmark)
+        res.locals.data.bookmark = bookmark
         next()
     } catch (error) {
         res.status(400).json({ msg: error.message })
@@ -39,8 +39,8 @@ async function create(req, res, next){
 
 async function indexComplete(_, res ,next) {
     try {
-        const todos = await Todo.find({ completed: true })
-        res.locals.data.todos = todos
+        const bookmarks = await Bookmark.find({ completed: true })
+        res.locals.data.bookmarks = bookmarks
         next()
     } catch (error) {
         res.status(400).json({ msg: error.message })
@@ -49,8 +49,8 @@ async function indexComplete(_, res ,next) {
 
 async function indexNotComplete(_ ,res,next) {
     try {
-        const todos = await Todo.find({ completed: false })
-        res.locals.data.todos = todos
+        const bookmarks = await Bookmark.find({ completed: false })
+        res.locals.data.bookmarks = bookmarks
         next()
     } catch (error) {
         res.status(400).json({ msg: error.message })
@@ -60,8 +60,8 @@ async function indexNotComplete(_ ,res,next) {
 
 async function show(req ,res,next) {
     try {
-        const todo = await Todo.findById(req.params.id)
-        res.locals.data.todo = todo
+        const bookmark = await Bookmark.findById(req.params.id)
+        res.locals.data.bookmark = bookmark
         next()
     } catch (error) {
         res.status(400).json({ msg: error.message })
@@ -74,8 +74,8 @@ async function show(req ,res,next) {
 
 async function update(req ,res,next) {
     try {
-        const todo = await Todo.findByIdAndUpdate(req.params.id, req.body, { new: true })
-        res.locals.data.todo = todo
+        const bookmark = await Bookmark.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        res.locals.data.bookmark = bookmark
         next()
     } catch (error) {
         res.status(400).json({ msg: error.message })
@@ -86,8 +86,8 @@ async function update(req ,res,next) {
 
 async function destroy(req ,res,next) {
     try {
-        const todo = await Todo.findByIdAndDelete(req.params.id)
-        res.locals.data.todo = todo
+        const bookmark = await Bookmark.findByIdAndDelete(req.params.id)
+        res.locals.data.bookmark = bookmark
         next()
     } catch (error) {
         res.status(400).json({ msg: error.message })
