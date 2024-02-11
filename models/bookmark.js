@@ -3,9 +3,7 @@ const { model, Schema } = require('mongoose')
 
 const bookmarkSchema = new Schema ({
     title: { required: true, type: String },
-    completed: { required: true, type: Boolean }
-}, {
-    timestamps: true
+    url: { required: true, type: String }
 })
 
 const Bookmark = model('Bookmark', bookmarkSchema)
