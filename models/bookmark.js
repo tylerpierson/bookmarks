@@ -1,13 +1,13 @@
 const { model, Schema } = require('mongoose')
 
 
-const todoSchema = new Schema ({
+const bookmarkSchema = new Schema ({
     title: { required: true, type: String },
     completed: { required: true, type: Boolean }
 }, {
     timestamps: true
 })
 
-const Todo = model('Todo', todoSchema)
+const Bookmark = model('Bookmark', bookmarkSchema)
 
-module.exports = Todo
+module.exports = Bookmark
