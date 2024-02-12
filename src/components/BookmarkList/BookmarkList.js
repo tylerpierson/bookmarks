@@ -17,6 +17,9 @@ export default function BookmarkList ({
 
     return(
         <div className={styles.bookmarklist}>
+            <div className={styles.banner}>
+                <h1>Tyler's Bookmarks</h1>
+            </div>
             Website Title:<input 
             className={styles.input}
             type="text" 

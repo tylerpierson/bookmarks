@@ -1,15 +1,26 @@
 .bookmarklist {
     display: flex;
-    background-color: #000;
+    height: 91.5vh;
+    background: linear-gradient(
+    45deg,
+    #999 5%,
+    #fff 10%,
+    #ccc 30%,
+    #ddd 50%,
+    #ccc 70%,
+    #fff 80%,
+    #999 95%
+  );
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
-    color: #fff;
-    border-radius: 9px;
+    color: #000;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     border: 1px solid rgba(23,5, 58, 0.1);
     padding: 2rem;
-    box-shadow: 2px 4px 8px #FFF;
+    box-shadow: 2px 14px 10px #080808;
     .input {
         color:#000;
         display: inline-block;
