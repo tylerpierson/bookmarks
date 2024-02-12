@@ -4,7 +4,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #BFDBF7;
+    background: radial-gradient(circle at 100%, #333, #333 50%, #eee 75%, #333 75%);
+    font-family: sans-serif;
 }
 
 .banner{
@@ -20,6 +21,7 @@ body {
     h1 {
         width: 100%;
         text-align: center;
-        color: #022B3A;
+        color: #fff;
+        text-shadow: #000 1px 1px 10px;
     }
 }

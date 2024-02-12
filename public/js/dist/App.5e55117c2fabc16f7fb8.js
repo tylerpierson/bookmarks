@@ -200,12 +200,27 @@ function Bookmark(_ref) {
     buttonAction,
     buttonText
   } = _ref;
+  const handleClick = e => {
+    if (!e.target.closest('button')) {
+      window.open(bookmark.url, '_blank');
+    }
+  };
   return /*#__PURE__*/React.createElement("div", {
+    className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].bookmarkContainer,
+    onClick: handleClick
+  }, /*#__PURE__*/React.createElement("div", {
     className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].bookmark
-  }, " ", /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("a", {
+    className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].a,
     target: "_blank",
     href: bookmark.url
-  }, bookmark.title), /*#__PURE__*/React.createElement("button", {
+  }, bookmark.title), /*#__PURE__*/React.createElement("div", {
+    className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].bookmarkUrl
+  }, /*#__PURE__*/React.createElement("a", {
+    className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].a,
+    target: "_blank",
+    href: bookmark.url
+  }, bookmark.url))), /*#__PURE__*/React.createElement("button", {
     className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].button,
     onClick: () => buttonAction(bookmark._id)
   }, buttonText));
@@ -324,7 +339,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #BFDBF7;
+  background: radial-gradient(circle at 100%, #333, #333 50%, #eee 75%, #333 75%);
+  font-family: sans-serif;
 }
 
 .KTmxx2sH00E53HXHCND1 {
@@ -341,8 +357,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `body {
 .KTmxx2sH00E53HXHCND1 h1 {
   width: 100%;
   text-align: center;
-  color: #022B3A;
-}`, "",{"version":3,"sources":["webpack://./src/App.module.scss"],"names":[],"mappings":"AAAA;EACI,SAAA;EACA,iBAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,yBAAA;AACJ;;AAEA;EACI,WAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,sBAAA;AACJ;AAAI;EACI,UAAA;EACA,iBAAA;AAER;AAAI;EACI,WAAA;EACA,kBAAA;EACA,cAAA;AAER","sourcesContent":["body {\n    margin: 0;\n    min-height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    background-color: #BFDBF7;\n}\n\n.banner{\n    width: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    img {\n        width: 50%;\n        max-height: 300px;\n    }\n    h1 {\n        width: 100%;\n        text-align: center;\n        color: #022B3A;\n    }\n}\n"],"sourceRoot":""}]);
+  color: #fff;
+  text-shadow: #000 1px 1px 10px;
+}`, "",{"version":3,"sources":["webpack://./src/App.module.scss"],"names":[],"mappings":"AAAA;EACI,SAAA;EACA,iBAAA;EACA,aAAA;EACA,sBAAA;EACA,mBAAA;EACA,+EAAA;EACA,uBAAA;AACJ;;AAEA;EACI,WAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,sBAAA;AACJ;AAAI;EACI,UAAA;EACA,iBAAA;AAER;AAAI;EACI,WAAA;EACA,kBAAA;EACA,WAAA;EACA,8BAAA;AAER","sourcesContent":["body {\n    margin: 0;\n    min-height: 100vh;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    background: radial-gradient(circle at 100%, #333, #333 50%, #eee 75%, #333 75%);\n    font-family: sans-serif;\n}\n\n.banner{\n    width: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    img {\n        width: 50%;\n        max-height: 300px;\n    }\n    h1 {\n        width: 100%;\n        text-align: center;\n        color: #fff;\n        text-shadow: #000 1px 1px 10px;\n    }\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"banner": `KTmxx2sH00E53HXHCND1`
@@ -370,12 +387,29 @@ ___CSS_LOADER_EXPORT___.locals = {
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.TKdPfLWuQZ3wBBMgYFyM {
-  /*! keep */
-  font-size: 1.5rem;
-  color: #FFF;
+___CSS_LOADER_EXPORT___.push([module.id, `.k6ypUdZIToQcx5q02lTg {
+  background-color: white;
+  border-radius: 30px;
+  width: 80%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  transition: 0.4s ease;
+  margin: 0.1rem 0;
 }
-.TKdPfLWuQZ3wBBMgYFyM .JSmS6vn316ABbTaYqDzk {
+.k6ypUdZIToQcx5q02lTg .TKdPfLWuQZ3wBBMgYFyM {
+  /*! keep */
+  font-size: 1.2rem;
+  color: #000;
+}
+.k6ypUdZIToQcx5q02lTg .TKdPfLWuQZ3wBBMgYFyM .T8Mtf4mIRTymwZKFM12v .aYxmGpUOPwLytwopcsyn {
+  color: grey;
+}
+.k6ypUdZIToQcx5q02lTg .TKdPfLWuQZ3wBBMgYFyM .aYxmGpUOPwLytwopcsyn {
+  text-decoration: none;
+  color: black;
+}
+.k6ypUdZIToQcx5q02lTg .JSmS6vn316ABbTaYqDzk {
   background-color: rgba(25, 5, 58, 0.8);
   text-transform: uppercase;
   cursor: pointer;
@@ -386,11 +420,29 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.TKdPfLWuQZ3wBBMgYFyM {
   display: inline-block;
   margin-left: 1rem;
   border: 2px;
+  border-radius: 30px;
   box-shadow: 0 2px 5px rgba(23, 5, 58, 0.5);
-}`, "",{"version":3,"sources":["webpack://./src/components/Bookmark/Bookmark.module.scss"],"names":[],"mappings":"AAAA;EACI,UAAA;EACA,iBAAA;EACA,WAAA;AACJ;AAAI;EACI,sCAAA;EACA,yBAAA;EACA,eAAA;EACA,iBAAA;EACA,qBAAA;EACA,eAAA;EACA,gBAAA;EACA,qBAAA;EACA,iBAAA;EACA,WAAA;EACA,0CAAA;AAER","sourcesContent":[".bookmark {\n    /*! keep */\n    font-size: 1.5rem;\n    color: #FFF;\n    .button {\n        background-color: rgba(25, 5, 58, 0.8);\n        text-transform: uppercase;\n        cursor: pointer;\n        color: ghostwhite;\n        padding: 0.25rem 1rem;\n        font-size: 1rem;\n        font-weight: 700;\n        display: inline-block;\n        margin-left: 1rem;\n        border: 2px;\n        box-shadow: 0 2px 5px rgba(23, 5, 58, 0.5);\n    }\n}"],"sourceRoot":""}]);
+  transition: 0.3s ease;
+}
+.k6ypUdZIToQcx5q02lTg .JSmS6vn316ABbTaYqDzk:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  transform: scale(1.1);
+  transition: 0.3s ease;
+}
+
+.k6ypUdZIToQcx5q02lTg:hover {
+  box-shadow: 0 0 10px solid white;
+  transform: scale(1.1);
+  transition: 0.4s ease;
+}`, "",{"version":3,"sources":["webpack://./src/components/Bookmark/Bookmark.module.scss"],"names":[],"mappings":"AAAA;EACI,uBAAA;EACA,mBAAA;EACA,UAAA;EACA,aAAA;EACA,aAAA;EACA,8BAAA;EACA,qBAAA;EACA,gBAAA;AACJ;AAAI;EACI,UAAA;EACA,iBAAA;EACA,WAAA;AAER;AAAY;EACI,WAAA;AAEhB;AACQ;EACI,qBAAA;EACA,YAAA;AACZ;AAEI;EACI,sCAAA;EACA,yBAAA;EACA,eAAA;EACA,iBAAA;EACA,qBAAA;EACA,eAAA;EACA,gBAAA;EACA,qBAAA;EACA,iBAAA;EACA,WAAA;EACA,mBAAA;EACA,0CAAA;EACA,qBAAA;AAAR;AAEI;EACI,uBAAA;EACA,YAAA;EACA,uBAAA;EACA,qBAAA;EACA,qBAAA;AAAR;;AAGA;EACI,gCAAA;EACA,qBAAA;EACA,qBAAA;AAAJ","sourcesContent":[".bookmarkContainer {\n    background-color:white;\n    border-radius: 30px;\n    width: 80%;\n    padding: 1rem;\n    display: flex;\n    justify-content: space-between;\n    transition: .4s ease;\n    margin: .1rem 0;\n    .bookmark {\n        /*! keep */\n        font-size: 1.2rem;\n        color: #000;\n        .bookmarkUrl{\n            .a{\n                color: grey;\n            }\n        }\n        .a {\n            text-decoration: none;\n            color: black;\n        }\n    }\n    .button {\n        background-color: rgba(25, 5, 58, 0.8);\n        text-transform: uppercase;\n        cursor: pointer;\n        color: ghostwhite;\n        padding: 0.25rem 1rem;\n        font-size: 1rem;\n        font-weight: 700;\n        display: inline-block;\n        margin-left: 1rem;\n        border: 2px;\n        border-radius: 30px;\n        box-shadow: 0 2px 5px rgba(23, 5, 58, 0.5);\n        transition: .3s ease;\n    }\n    .button:hover{\n        background-color: white;\n        color: black;\n        border: 2px solid black;\n        transform: scale(1.1);\n        transition: .3s ease;\n    }\n}\n.bookmarkContainer:hover{\n    box-shadow: 0 0 10px solid white;\n    transform: scale(1.1);\n    transition: .4s ease;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
+	"bookmarkContainer": `k6ypUdZIToQcx5q02lTg`,
 	"bookmark": `TKdPfLWuQZ3wBBMgYFyM`,
+	"bookmarkUrl": `T8Mtf4mIRTymwZKFM12v`,
+	"a": `aYxmGpUOPwLytwopcsyn`,
 	"button": `JSmS6vn316ABbTaYqDzk`
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
@@ -418,7 +470,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `.Y9rNf4f3lleHsoKVWRIg {
   display: flex;
-  background-color: #022B3A;
+  background-color: #000;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -427,17 +479,17 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.Y9rNf4f3lleHsoKVWRIg {
   border-radius: 9px;
   border: 1px solid rgba(23, 5, 58, 0.1);
   padding: 2rem;
-  box-shadow: 2px 4px 8px #1F7A8C;
+  box-shadow: 2px 4px 8px #FFF;
 }
 .Y9rNf4f3lleHsoKVWRIg .xqIdbaiF17DoAye5kkLw {
-  color: rgba(89, 15, 230, 0.8);
+  color: #000;
   display: inline-block;
   font-size: 2.5rem;
   height: 3.5rem;
   margin: 1rem;
   border: 0;
   background-color: aliceblue;
-}`, "",{"version":3,"sources":["webpack://./src/components/BookmarkList/BookmarkList.module.scss"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,yBAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,WAAA;EACA,kBAAA;EACA,sCAAA;EACA,aAAA;EACA,+BAAA;AACJ;AAAI;EACI,6BAAA;EACA,qBAAA;EACA,iBAAA;EACA,cAAA;EACA,YAAA;EACA,SAAA;EACA,2BAAA;AAER","sourcesContent":[".bookmarklist {\n    display: flex;\n    background-color: #022B3A;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    font-size: 2rem;\n    color: #fff;\n    border-radius: 9px;\n    border: 1px solid rgba(23,5, 58, 0.1);\n    padding: 2rem;\n    box-shadow: 2px 4px 8px #1F7A8C;\n    .input {\n        color:rgba(89, 15, 230, 0.8);\n        display: inline-block;\n        font-size: 2.5rem;\n        height: 3.5rem;\n        margin: 1rem;\n        border: 0;\n        background-color:aliceblue;\n    }\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/BookmarkList/BookmarkList.module.scss"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,sBAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,WAAA;EACA,kBAAA;EACA,sCAAA;EACA,aAAA;EACA,4BAAA;AACJ;AAAI;EACI,WAAA;EACA,qBAAA;EACA,iBAAA;EACA,cAAA;EACA,YAAA;EACA,SAAA;EACA,2BAAA;AAER","sourcesContent":[".bookmarklist {\n    display: flex;\n    background-color: #000;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    font-size: 2rem;\n    color: #fff;\n    border-radius: 9px;\n    border: 1px solid rgba(23,5, 58, 0.1);\n    padding: 2rem;\n    box-shadow: 2px 4px 8px #FFF;\n    .input {\n        color:#000;\n        display: inline-block;\n        font-size: 2.5rem;\n        height: 3.5rem;\n        margin: 1rem;\n        border: 0;\n        background-color:aliceblue;\n    }\n    \n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"bookmarklist": `Y9rNf4f3lleHsoKVWRIg`,
@@ -778,4 +830,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.966a191a5b25b2db0e33ebb38ce3f869.js.map
+//# sourceMappingURL=App.fb5442713f379de6c4a501707903bbd0.js.map
