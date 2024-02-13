@@ -1,11 +1,12 @@
-import styles from './Bookmark.module.scss'
+import React from 'react';
+import styles from './Bookmark.module.scss';
 
-export default function Bookmark({ bookmark, buttonAction, buttonText }) {
+export default function Bookmark({ bookmark, deleteAction, editAction }) {
     const handleClick = (e) => {
         if (!e.target.closest('button')) {
-            window.open(bookmark.url, '_blank')
+            window.open(bookmark.url, '_blank');
         }
-    }
+    };
 
     return (
         <div className={styles.bookmarkContainer} onClick={handleClick}>
@@ -20,11 +21,14 @@ export default function Bookmark({ bookmark, buttonAction, buttonText }) {
                 </div>
             </div>
             <div>
-                <button className={styles.button} onClick={() => buttonAction(bookmark._id)}>
-                    {buttonText}
+                <button className={styles.button} onClick={() => deleteAction(bookmark._id)}>
+                    Delete
+                </button>
+                <button className={styles.button} onClick={() => editAction(bookmark._id)}>
+                    Edit
                 </button>
                 <div className={styles.animation}></div>
             </div>
         </div>
-    )
+    );
 }

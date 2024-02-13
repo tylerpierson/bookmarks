@@ -6,12 +6,17 @@ export default function BookmarkList({
     createBookmark,
     setNewBookmark,
     bookmarks,
+    updateBookmark,
     deleteBookmark
 }) {
     function handleCreateBookmark() {
         if (newBookmark.title && newBookmark.url && newBookmark.url !== 'http://' && newBookmark.url !== 'https://') {
             createBookmark();
         }
+    }
+
+    function handleUpdateBookmark(bookmarkId) {
+        updateBookmark(bookmarkId);
     }
 
     return (
@@ -53,8 +58,8 @@ export default function BookmarkList({
                         <Bookmark
                             key={bookmark._id}
                             bookmark={bookmark}
-                            buttonAction={deleteBookmark}
-                            buttonText={'Delete'}
+                            deleteAction={deleteBookmark}
+                            editAction={updateBookmark}
                         />
                     ))}
                 </div>
