@@ -1,6 +1,14 @@
+h1{
+  text-align: center;
+  text-shadow: 1px 1px 1px rgb(250, 208, 0);
+}
+
 .container {
   display: flex;
+  height: 550px;
+  max-height: 75vh;
   .inputContainer {
+    max-height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,11 +42,12 @@
       color: rgba(25, 5, 58, 0.8);
     }
 
-    flex: .7
   }
 
   .bookmarksContainer {
-    flex: 1.5;
-    margin-left: 150px; 
+    width: 100%;
+    padding-left: 150px;
+    overflow: hidden;
+    overflow-y: scroll;
   }
 }

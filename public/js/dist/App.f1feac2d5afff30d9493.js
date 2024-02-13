@@ -15,15 +15,12 @@
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_BookmarkList_BookmarkList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/BookmarkList/BookmarkList */ "./src/components/BookmarkList/BookmarkList.js");
 /* harmony import */ var _App_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.module.scss */ "./src/App.module.scss");
-/* harmony import */ var immutable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! immutable */ "./node_modules/immutable/dist/immutable.js");
-/* harmony import */ var immutable__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(immutable__WEBPACK_IMPORTED_MODULE_3__);
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
 function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
 
 
 
@@ -269,13 +266,13 @@ function BookmarkList(_ref) {
   function handleUpdateBookmark(bookmarkId) {
     updateBookmark(bookmarkId);
   }
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Tyler's Bookmarks"), /*#__PURE__*/React.createElement("div", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].container
   }, /*#__PURE__*/React.createElement("div", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].inputContainer
   }, /*#__PURE__*/React.createElement("div", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].banner
-  }, /*#__PURE__*/React.createElement("h1", null, "Tyler's Bookmarks")), /*#__PURE__*/React.createElement("div", null, "Website Title:", /*#__PURE__*/React.createElement("input", {
+  }), /*#__PURE__*/React.createElement("div", null, "Website Title:", /*#__PURE__*/React.createElement("input", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input,
     type: "text",
     value: newBookmark.title,
@@ -308,7 +305,7 @@ function BookmarkList(_ref) {
     bookmark: bookmark,
     deleteAction: deleteBookmark,
     editAction: updateBookmark
-  })))));
+  }))))));
 }
 
 /***/ }),
@@ -357,12 +354,11 @@ ___CSS_LOADER_EXPORT___.push([module.id, `body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  display: flex;
-  align-items: center;
   color: white;
   font-size: 2rem;
   letter-spacing: 2px;
-}`, "",{"version":3,"sources":["webpack://./src/App.module.scss"],"names":[],"mappings":"AAAA;EACI,2BAAA;EACA,WAAA;EACA,aAAA;EACA,SAAA;EACA,UAAA;EACA,uBAAA;EACA,aAAA;EACA,mBAAA;EACA,YAAA;EACA,eAAA;EACA,mBAAA;AACJ","sourcesContent":["body {\n    background: rgb(41, 46, 74);\n    width: 100%;\n    height: 100vh;\n    margin: 0;\n    padding: 0;\n    font-family: sans-serif;\n    display: flex;\n    align-items: center;\n    color: white;\n    font-size: 2rem;\n    letter-spacing: 2px;\n}\n"],"sourceRoot":""}]);
+  overflow-y: hidden;
+}`, "",{"version":3,"sources":["webpack://./src/App.module.scss"],"names":[],"mappings":"AAAA;EACI,2BAAA;EACA,WAAA;EACA,aAAA;EACA,SAAA;EACA,UAAA;EACA,uBAAA;EACA,YAAA;EACA,eAAA;EACA,mBAAA;EACA,kBAAA;AACJ","sourcesContent":["body {\n    background: rgb(41, 46, 74);\n    width: 100%;\n    height: 100vh;\n    margin: 0;\n    padding: 0;\n    font-family: sans-serif;\n    color: white;\n    font-size: 2rem;\n    letter-spacing: 2px;\n    overflow-y: hidden;\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
@@ -408,8 +404,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.k6ypUdZIToQcx5q02lTg {
   /*! keep */
   font-size: 1.2rem;
   color: #000;
-  border: 1px solid red;
-  max-width: 265px;
+  max-width: 270px;
   overflow: hidden;
   white-space: no-wrap;
 }
@@ -469,7 +464,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.k6ypUdZIToQcx5q02lTg {
 .k6ypUdZIToQcx5q02lTg:hover .vYwlXVdYnlZ_BSI3asJQ {
   transform: scale(100);
   z-index: -1000;
-}`, "",{"version":3,"sources":["webpack://./src/components/Bookmark/Bookmark.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,mBAAA;EACA,wCAAA;EACA,yCAAA;EACA,4CAAA;EACA,2BAAA;EACA,YAAA;EACA,aAAA;EACA,aAAA;EACA,8BAAA;EACA,qBAAA;EACA,cAAA;EACA,kBAAA;EACA,gBAAA;AACJ;AACI;EACI,UAAA;EACA,iBAAA;EACA,WAAA;EAUA,qBAAA;EACA,gBAAA;EACA,gBAAA;EACA,oBAAA;AARR;AAHY;EACI,WAAA;AAKhB;AAFQ;EACI,qBAAA;EACA,YAAA;AAIZ;AAII;EACI,uBAAA;EACA,yFAAA;EACA,iCAAA;EACA,YAAA;EACA,yBAAA;EACA,eAAA;EACA,qBAAA;EACA,eAAA;EACA,gBAAA;EACA,qBAAA;EACA,kBAAA;EACA,mBAAA;EACA,qBAAA;EACA,UAAA;AAFR;AAIQ;EACI,gCAAA;EACA,iBAAA;EACA,WAAA;EACA,0CAAA;EACA,qBAAA;EACA,qBAAA;EACA,gBAAA;AAFZ;AAMI;EACI,WAAA;EACA,YAAA;EACA,kBAAA;EACA,6BAAA;EACA,kCAAA;EACA,kBAAA;EACA,QAAA;EACA,wBAAA;EACA,gCAAA;EACA,UAAA;EACA,qBAAA;AAJR;AAMQ;EACI,qBAAA;AAJZ;AAQI;EACI,gCAAA;EACA,qBAAA;EACA,qBAAA;AANR;AAQQ;EACI,qBAAA;EACA,cAAA;AANZ","sourcesContent":[".bookmarkContainer {\n    color: white;\n    border-radius: 20px;\n    border-right: 1px solid rgb(250, 208, 0);\n    border-bottom: 1px solid rgb(250, 208, 0);\n    box-shadow: 25px 14px 100px rgb(69, 73, 102);\n    background: rgb(58, 63, 99);\n    width: 475px;\n    padding: 1rem;\n    display: flex;\n    justify-content: space-between;\n    transition: .4s ease;\n    margin: 1rem 0;\n    position: relative;\n    overflow: hidden;\n\n    .bookmark {\n        /*! keep */\n        font-size: 1.2rem;\n        color: #000;\n        .bookmarkUrl {\n            .a {\n                color: grey;\n            }\n        }\n        .a {\n            text-decoration: none;\n            color: white;\n        }\n        border: 1px solid red;\n        max-width: 265px;\n        overflow: hidden;\n        white-space: no-wrap;\n    }\n\n    .button {\n        color: rgb(250, 208, 0);\n        background: linear-gradient(0.38turn, rgb(41, 46, 74), rgb(58,63,99), rgb(87, 93, 138));\n        border: 1px solid rgb(58,63,99);\n        height: 45px;\n        text-transform: uppercase;\n        cursor: pointer;\n        padding: 0.25rem 1rem;\n        font-size: 1rem;\n        font-weight: 700;\n        display: inline-block;\n        margin-right: 1rem;\n        border-radius: 30px;\n        transition: .3s ease;\n        z-index: 2;\n\n        &:hover {\n            background: rgba(25, 5, 58, 0.8);\n            color: ghostwhite;\n            border: 2px;\n            box-shadow: 0 2px 5px rgba(23, 5, 58, 0.5);\n            transform: scale(1.1);\n            transition: .3s ease;\n            box-shadow: none;\n        }\n    }\n\n    .animation {\n        width: 10px;\n        height: 10px;\n        border-radius: 50%;\n        background-color: transparent;\n        border: 2px solid rgb(250, 208, 0);\n        position: absolute;\n        top: 50%;\n        right: calc(100% + 10px);\n        transform: translate(-50%, -50%);\n        z-index: 1;\n        transition: .5s ease;\n\n        .bookmarkContainer:hover & {\n            transform: scale(100);\n        }\n    }\n    \n    &:hover {\n        box-shadow: 0 0 10px solid white;\n        transform: scale(1.1);\n        transition: .4s ease;\n\n        .animation {\n            transform: scale(100);\n            z-index: -1000;\n        }\n    }\n}\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/Bookmark/Bookmark.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,mBAAA;EACA,wCAAA;EACA,yCAAA;EACA,4CAAA;EACA,2BAAA;EACA,YAAA;EACA,aAAA;EACA,aAAA;EACA,8BAAA;EACA,qBAAA;EACA,cAAA;EACA,kBAAA;EACA,gBAAA;AACJ;AACI;EACI,UAAA;EACA,iBAAA;EACA,WAAA;EAUA,gBAAA;EACA,gBAAA;EACA,oBAAA;AARR;AAFY;EACI,WAAA;AAIhB;AADQ;EACI,qBAAA;EACA,YAAA;AAGZ;AAII;EACI,uBAAA;EACA,yFAAA;EACA,iCAAA;EACA,YAAA;EACA,yBAAA;EACA,eAAA;EACA,qBAAA;EACA,eAAA;EACA,gBAAA;EACA,qBAAA;EACA,kBAAA;EACA,mBAAA;EACA,qBAAA;EACA,UAAA;AAFR;AAIQ;EACI,gCAAA;EACA,iBAAA;EACA,WAAA;EACA,0CAAA;EACA,qBAAA;EACA,qBAAA;EACA,gBAAA;AAFZ;AAMI;EACI,WAAA;EACA,YAAA;EACA,kBAAA;EACA,6BAAA;EACA,kCAAA;EACA,kBAAA;EACA,QAAA;EACA,wBAAA;EACA,gCAAA;EACA,UAAA;EACA,qBAAA;AAJR;AAMQ;EACI,qBAAA;AAJZ;AAQI;EACI,gCAAA;EACA,qBAAA;EACA,qBAAA;AANR;AAQQ;EACI,qBAAA;EACA,cAAA;AANZ","sourcesContent":[".bookmarkContainer {\n    color: white;\n    border-radius: 20px;\n    border-right: 1px solid rgb(250, 208, 0);\n    border-bottom: 1px solid rgb(250, 208, 0);\n    box-shadow: 25px 14px 100px rgb(69, 73, 102);\n    background: rgb(58, 63, 99);\n    width: 475px;\n    padding: 1rem;\n    display: flex;\n    justify-content: space-between;\n    transition: .4s ease;\n    margin: 1rem 0;\n    position: relative;\n    overflow: hidden;\n\n    .bookmark {\n        /*! keep */\n        font-size: 1.2rem;\n        color: #000;\n        .bookmarkUrl {\n            .a {\n                color: grey;\n            }\n        }\n        .a {\n            text-decoration: none;\n            color: white;\n        }\n        max-width: 270px;\n        overflow: hidden;\n        white-space: no-wrap;\n    }\n\n    .button {\n        color: rgb(250, 208, 0);\n        background: linear-gradient(0.38turn, rgb(41, 46, 74), rgb(58,63,99), rgb(87, 93, 138));\n        border: 1px solid rgb(58,63,99);\n        height: 45px;\n        text-transform: uppercase;\n        cursor: pointer;\n        padding: 0.25rem 1rem;\n        font-size: 1rem;\n        font-weight: 700;\n        display: inline-block;\n        margin-right: 1rem;\n        border-radius: 30px;\n        transition: .3s ease;\n        z-index: 2;\n\n        &:hover {\n            background: rgba(25, 5, 58, 0.8);\n            color: ghostwhite;\n            border: 2px;\n            box-shadow: 0 2px 5px rgba(23, 5, 58, 0.5);\n            transform: scale(1.1);\n            transition: .3s ease;\n            box-shadow: none;\n        }\n    }\n\n    .animation {\n        width: 10px;\n        height: 10px;\n        border-radius: 50%;\n        background-color: transparent;\n        border: 2px solid rgb(250, 208, 0);\n        position: absolute;\n        top: 50%;\n        right: calc(100% + 10px);\n        transform: translate(-50%, -50%);\n        z-index: 1;\n        transition: .5s ease;\n\n        .bookmarkContainer:hover & {\n            transform: scale(100);\n        }\n    }\n    \n    &:hover {\n        box-shadow: 0 0 10px solid white;\n        transform: scale(1.1);\n        transition: .4s ease;\n\n        .animation {\n            transform: scale(100);\n            z-index: -1000;\n        }\n    }\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"bookmarkContainer": `k6ypUdZIToQcx5q02lTg`,
@@ -502,10 +497,18 @@ ___CSS_LOADER_EXPORT___.locals = {
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.lP8bUeE__NPUKEd25ulU {
+___CSS_LOADER_EXPORT___.push([module.id, `h1 {
+  text-align: center;
+  text-shadow: 1px 1px 1px rgb(250, 208, 0);
+}
+
+.lP8bUeE__NPUKEd25ulU {
   display: flex;
+  height: 550px;
+  max-height: 75vh;
 }
 .lP8bUeE__NPUKEd25ulU .xIp1lwxlhmnIlARjUYwN {
+  max-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -520,7 +523,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.lP8bUeE__NPUKEd25ulU {
   padding: 5rem;
   box-shadow: 25px 14px 100px rgb(69, 73, 102);
   background: rgb(58, 63, 99);
-  flex: 0.7;
 }
 .lP8bUeE__NPUKEd25ulU .xIp1lwxlhmnIlARjUYwN .xqIdbaiF17DoAye5kkLw {
   border-radius: 10px;
@@ -539,9 +541,11 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.lP8bUeE__NPUKEd25ulU {
   color: rgba(25, 5, 58, 0.8);
 }
 .lP8bUeE__NPUKEd25ulU .lFT9t9MxsUP6IDCopSXh {
-  flex: 1.5;
-  margin-left: 150px;
-}`, "",{"version":3,"sources":["webpack://./src/components/BookmarkList/BookmarkList.module.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;AACF;AAAE;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,YAAA;EACA,yCAAA;EACA,6BAAA;EACA,gCAAA;EACA,wCAAA;EACA,yCAAA;EACA,aAAA;EACA,4CAAA;EACA,2BAAA;EAoBA,SAAA;AAjBJ;AADI;EACE,mBAAA;EACA,2BAAA;EACA,qBAAA;EACA,iBAAA;EACA,cAAA;EACA,YAAA;EACA,SAAA;EACA,2BAAA;AAGN;AAAI;EACE,wBAAA;EACA,kCAAA;EACA,4BAAA;EACA,2BAAA;AAEN;AAIE;EACE,SAAA;EACA,kBAAA;AAFJ","sourcesContent":[".container {\n  display: flex;\n  .inputContainer {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    font-size: 2rem;\n    color: white;\n    text-shadow: 1px 1px 1px rgb(250, 208, 0);\n    border-top-right-radius: 20px;\n    border-bottom-right-radius: 20px;\n    border-right: 1px solid rgb(250, 208, 0);\n    border-bottom: 3px solid rgb(250, 208, 0);\n    padding: 5rem;\n    box-shadow: 25px 14px 100px rgb(69, 73, 102);\n    background: rgb(58, 63, 99);\n\n    .input {\n      border-radius: 10px;\n      color: rgba(25, 5, 58, 0.5);\n      display: inline-block;\n      font-size: 2.5rem;\n      height: 3.5rem;\n      margin: 1rem;\n      border: 0;\n      background-color: aliceblue;\n    }\n\n    .input:focus{\n      outline: none !important;\n      border: 3px solid rgb(250, 208, 0);\n      box-shadow: 0 0 10px #719ECE;\n      color: rgba(25, 5, 58, 0.8);\n    }\n\n    flex: .7\n  }\n\n  .bookmarksContainer {\n    flex: 1.5;\n    margin-left: 150px; \n  }\n}"],"sourceRoot":""}]);
+  width: 100%;
+  padding-left: 150px;
+  overflow: hidden;
+  overflow-y: scroll;
+}`, "",{"version":3,"sources":["webpack://./src/components/BookmarkList/BookmarkList.module.scss"],"names":[],"mappings":"AAAA;EACE,kBAAA;EACA,yCAAA;AACF;;AAEA;EACE,aAAA;EACA,aAAA;EACA,gBAAA;AACF;AAAE;EACE,iBAAA;EACA,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,YAAA;EACA,yCAAA;EACA,6BAAA;EACA,gCAAA;EACA,wCAAA;EACA,yCAAA;EACA,aAAA;EACA,4CAAA;EACA,2BAAA;AAEJ;AAAI;EACE,mBAAA;EACA,2BAAA;EACA,qBAAA;EACA,iBAAA;EACA,cAAA;EACA,YAAA;EACA,SAAA;EACA,2BAAA;AAEN;AACI;EACE,wBAAA;EACA,kCAAA;EACA,4BAAA;EACA,2BAAA;AACN;AAIE;EACE,WAAA;EACA,mBAAA;EACA,gBAAA;EACA,kBAAA;AAFJ","sourcesContent":["h1{\n  text-align: center;\n  text-shadow: 1px 1px 1px rgb(250, 208, 0);\n}\n\n.container {\n  display: flex;\n  height: 550px;\n  max-height: 75vh;\n  .inputContainer {\n    max-height: 300px;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    font-size: 2rem;\n    color: white;\n    text-shadow: 1px 1px 1px rgb(250, 208, 0);\n    border-top-right-radius: 20px;\n    border-bottom-right-radius: 20px;\n    border-right: 1px solid rgb(250, 208, 0);\n    border-bottom: 3px solid rgb(250, 208, 0);\n    padding: 5rem;\n    box-shadow: 25px 14px 100px rgb(69, 73, 102);\n    background: rgb(58, 63, 99);\n\n    .input {\n      border-radius: 10px;\n      color: rgba(25, 5, 58, 0.5);\n      display: inline-block;\n      font-size: 2.5rem;\n      height: 3.5rem;\n      margin: 1rem;\n      border: 0;\n      background-color: aliceblue;\n    }\n\n    .input:focus{\n      outline: none !important;\n      border: 3px solid rgb(250, 208, 0);\n      box-shadow: 0 0 10px #719ECE;\n      color: rgba(25, 5, 58, 0.8);\n    }\n\n  }\n\n  .bookmarksContainer {\n    width: 100%;\n    padding-left: 150px;\n    overflow: hidden;\n    overflow-y: scroll;\n  }\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"container": `lP8bUeE__NPUKEd25ulU`,
@@ -730,7 +734,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
@@ -876,9 +880,9 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_css-loader_dist_runtime_api_js-node_modules_css-loader_dist_runtime_sour-0ab90a"], () => (__webpack_require__("./src/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_css-loader_dist_runtime_api_js-node_modules_css-loader_dist_runtime_sour-b53f7e"], () => (__webpack_require__("./src/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.5b38ba3456111ebb527554408e6114c0.js.map
+//# sourceMappingURL=App.f7479c9be9b339dd680eee6fdeaf0b5e.js.map

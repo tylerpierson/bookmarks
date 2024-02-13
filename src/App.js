@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import BookmarkList from './components/BookmarkList/BookmarkList'
 import styles from './App.module.scss'
-import { update } from 'immutable'
 
 
 export default function App(){

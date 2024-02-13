@@ -20,10 +20,11 @@ export default function BookmarkList({
     }
 
     return (
+        <>
+        <h1>Tyler's Bookmarks</h1>
         <div className={styles.container}>
             <div className={styles.inputContainer}>
                 <div className={styles.banner}>
-                    <h1>Tyler's Bookmarks</h1>
                 </div>
                 <div>
                     Website Title:<input
@@ -65,5 +66,7 @@ export default function BookmarkList({
                 </div>
             </div>
         </div>
+        </>
+        
     )
 }
