@@ -19,9 +19,12 @@ export default function Bookmark({ bookmark, buttonAction, buttonText }) {
                     </a>
                 </div>
             </div>
-            <button className={styles.button} onClick={() => buttonAction(bookmark._id)}>
-                {buttonText}
-            </button>
+            <div>
+                <button className={styles.button} onClick={() => buttonAction(bookmark._id)}>
+                    {buttonText}
+                </button>
+                <div className={styles.animation}></div>
+            </div>
         </div>
     )
 }
