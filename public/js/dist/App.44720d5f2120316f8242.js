@@ -409,6 +409,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.k6ypUdZIToQcx5q02lTg {
 }
 .k6ypUdZIToQcx5q02lTg .JSmS6vn316ABbTaYqDzk {
   background-color: rgba(25, 5, 58, 0.8);
+  height: 45px;
   text-transform: uppercase;
   cursor: pointer;
   color: ghostwhite;
@@ -424,11 +425,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.k6ypUdZIToQcx5q02lTg {
   z-index: 2;
 }
 .k6ypUdZIToQcx5q02lTg .JSmS6vn316ABbTaYqDzk:hover {
-  color: rgba(25, 5, 58, 0.8);
-  background-color: rgb(250, 208, 0);
-  border: 1px solid rgba(25, 5, 58, 0.8);
-  transform: scale(1.1);
+  color: rgb(250, 208, 0);
+  background: linear-gradient(0.38turn, rgb(41, 46, 74), rgb(58, 63, 99), rgb(87, 93, 138));
+  border: 1px solid rgb(41, 46, 74);
+  transform: scale(0.9);
   transition: 0.3s ease;
+  box-shadow: none;
 }
 .k6ypUdZIToQcx5q02lTg .vYwlXVdYnlZ_BSI3asJQ {
   width: 10px;
@@ -454,7 +456,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.k6ypUdZIToQcx5q02lTg {
 .k6ypUdZIToQcx5q02lTg:hover .vYwlXVdYnlZ_BSI3asJQ {
   transform: scale(100);
   z-index: -1000;
-}`, "",{"version":3,"sources":["webpack://./src/components/Bookmark/Bookmark.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,mBAAA;EACA,wCAAA;EACA,yCAAA;EACA,4CAAA;EACA,2BAAA;EACA,YAAA;EACA,aAAA;EACA,aAAA;EACA,8BAAA;EACA,qBAAA;EACA,cAAA;EACA,kBAAA;EACA,gBAAA;AACJ;AACI;EACI,UAAA;EACA,iBAAA;EACA,WAAA;AACR;AACY;EACI,WAAA;AAChB;AAEQ;EACI,qBAAA;EACA,YAAA;AAAZ;AAII;EACI,sCAAA;EACA,yBAAA;EACA,eAAA;EACA,iBAAA;EACA,qBAAA;EACA,eAAA;EACA,gBAAA;EACA,qBAAA;EACA,kBAAA;EACA,WAAA;EACA,mBAAA;EACA,0CAAA;EACA,qBAAA;EACA,UAAA;AAFR;AAIQ;EACI,2BAAA;EACA,kCAAA;EACA,sCAAA;EACA,qBAAA;EACA,qBAAA;AAFZ;AAMI;EACI,WAAA;EACA,YAAA;EACA,kBAAA;EACA,6BAAA;EACA,kCAAA;EACA,kBAAA;EACA,QAAA;EACA,wBAAA;EACA,gCAAA;EACA,UAAA;EACA,qBAAA;AAJR;AAMQ;EACI,qBAAA;AAJZ;AAQI;EACI,gCAAA;EACA,qBAAA;EACA,qBAAA;AANR;AAQQ;EACI,qBAAA;EACA,cAAA;AANZ","sourcesContent":[".bookmarkContainer {\n    color: white;\n    border-radius: 20px;\n    border-right: 1px solid rgb(250, 208, 0);\n    border-bottom: 1px solid rgb(250, 208, 0);\n    box-shadow: 25px 14px 100px rgb(69, 73, 102);\n    background: rgb(58, 63, 99);\n    width: 475px;\n    padding: 1rem;\n    display: flex;\n    justify-content: space-between;\n    transition: .4s ease;\n    margin: 1rem 0;\n    position: relative;\n    overflow: hidden;\n\n    .bookmark {\n        /*! keep */\n        font-size: 1.2rem;\n        color: #000;\n        .bookmarkUrl {\n            .a {\n                color: grey;\n            }\n        }\n        .a {\n            text-decoration: none;\n            color: white;\n        }\n    }\n\n    .button {\n        background-color: rgba(25, 5, 58, 0.8);\n        text-transform: uppercase;\n        cursor: pointer;\n        color: ghostwhite;\n        padding: 0.25rem 1rem;\n        font-size: 1rem;\n        font-weight: 700;\n        display: inline-block;\n        margin-right: 1rem;\n        border: 2px;\n        border-radius: 30px;\n        box-shadow: 0 2px 5px rgba(23, 5, 58, 0.5);\n        transition: .3s ease;\n        z-index: 2;\n\n        &:hover {\n            color: rgba(25, 5, 58, 0.8);\n            background-color: rgb(250, 208, 0);\n            border: 1px solid rgba(25, 5, 58, 0.8);\n            transform: scale(1.1);\n            transition: .3s ease;\n        }\n    }\n\n    .animation {\n        width: 10px;\n        height: 10px;\n        border-radius: 50%;\n        background-color: transparent;\n        border: 2px solid rgb(250, 208, 0);\n        position: absolute;\n        top: 50%;\n        right: calc(100% + 10px);\n        transform: translate(-50%, -50%);\n        z-index: 1;\n        transition: .5s ease;\n\n        .bookmarkContainer:hover & {\n            transform: scale(100);\n        }\n    }\n    \n    &:hover {\n        box-shadow: 0 0 10px solid white;\n        transform: scale(1.1);\n        transition: .4s ease;\n\n        .animation {\n            transform: scale(100);\n            z-index: -1000;\n        }\n    }\n}\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/Bookmark/Bookmark.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,mBAAA;EACA,wCAAA;EACA,yCAAA;EACA,4CAAA;EACA,2BAAA;EACA,YAAA;EACA,aAAA;EACA,aAAA;EACA,8BAAA;EACA,qBAAA;EACA,cAAA;EACA,kBAAA;EACA,gBAAA;AACJ;AACI;EACI,UAAA;EACA,iBAAA;EACA,WAAA;AACR;AACY;EACI,WAAA;AAChB;AAEQ;EACI,qBAAA;EACA,YAAA;AAAZ;AAII;EACI,sCAAA;EACA,YAAA;EACA,yBAAA;EACA,eAAA;EACA,iBAAA;EACA,qBAAA;EACA,eAAA;EACA,gBAAA;EACA,qBAAA;EACA,kBAAA;EACA,WAAA;EACA,mBAAA;EACA,0CAAA;EACA,qBAAA;EACA,UAAA;AAFR;AAIQ;EACI,uBAAA;EACA,yFAAA;EACA,iCAAA;EACA,qBAAA;EACA,qBAAA;EACA,gBAAA;AAFZ;AAMI;EACI,WAAA;EACA,YAAA;EACA,kBAAA;EACA,6BAAA;EACA,kCAAA;EACA,kBAAA;EACA,QAAA;EACA,wBAAA;EACA,gCAAA;EACA,UAAA;EACA,qBAAA;AAJR;AAMQ;EACI,qBAAA;AAJZ;AAQI;EACI,gCAAA;EACA,qBAAA;EACA,qBAAA;AANR;AAQQ;EACI,qBAAA;EACA,cAAA;AANZ","sourcesContent":[".bookmarkContainer {\n    color: white;\n    border-radius: 20px;\n    border-right: 1px solid rgb(250, 208, 0);\n    border-bottom: 1px solid rgb(250, 208, 0);\n    box-shadow: 25px 14px 100px rgb(69, 73, 102);\n    background: rgb(58, 63, 99);\n    width: 475px;\n    padding: 1rem;\n    display: flex;\n    justify-content: space-between;\n    transition: .4s ease;\n    margin: 1rem 0;\n    position: relative;\n    overflow: hidden;\n\n    .bookmark {\n        /*! keep */\n        font-size: 1.2rem;\n        color: #000;\n        .bookmarkUrl {\n            .a {\n                color: grey;\n            }\n        }\n        .a {\n            text-decoration: none;\n            color: white;\n        }\n    }\n\n    .button {\n        background-color: rgba(25, 5, 58, 0.8);\n        height: 45px;\n        text-transform: uppercase;\n        cursor: pointer;\n        color: ghostwhite;\n        padding: 0.25rem 1rem;\n        font-size: 1rem;\n        font-weight: 700;\n        display: inline-block;\n        margin-right: 1rem;\n        border: 2px;\n        border-radius: 30px;\n        box-shadow: 0 2px 5px rgba(23, 5, 58, 0.5);\n        transition: .3s ease;\n        z-index: 2;\n\n        &:hover {\n            color: rgb(250, 208, 0);\n            background: linear-gradient(0.38turn, rgb(41, 46, 74), rgb(58,63,99), rgb(87, 93, 138));\n            border: 1px solid rgb(41, 46, 74);\n            transform: scale(.9);\n            transition: .3s ease;\n            box-shadow: none;\n        }\n    }\n\n    .animation {\n        width: 10px;\n        height: 10px;\n        border-radius: 50%;\n        background-color: transparent;\n        border: 2px solid rgb(250, 208, 0);\n        position: absolute;\n        top: 50%;\n        right: calc(100% + 10px);\n        transform: translate(-50%, -50%);\n        z-index: 1;\n        transition: .5s ease;\n\n        .bookmarkContainer:hover & {\n            transform: scale(100);\n        }\n    }\n    \n    &:hover {\n        box-shadow: 0 0 10px solid white;\n        transform: scale(1.1);\n        transition: .4s ease;\n\n        .animation {\n            transform: scale(100);\n            z-index: -1000;\n        }\n    }\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"bookmarkContainer": `k6ypUdZIToQcx5q02lTg`,
@@ -866,4 +868,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.191aab2176bf9911f1b96bd0c7d3a84a.js.map
+//# sourceMappingURL=App.e887df83c57c6d5f4111426158bf54f0.js.map
