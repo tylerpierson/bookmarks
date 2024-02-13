@@ -48,7 +48,6 @@ export default function BookmarkList({
                 </div>
             </div>
             <div className={styles.bookmarksContainer}>
-                <h3>Bookmarks</h3>
                 <div className={styles.bookmarks}>
                     {bookmarks.map(bookmark => (
                         <Bookmark

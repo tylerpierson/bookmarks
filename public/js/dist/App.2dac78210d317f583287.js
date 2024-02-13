@@ -292,7 +292,7 @@ function BookmarkList(_ref) {
     }
   }))), /*#__PURE__*/React.createElement("div", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].bookmarksContainer
-  }, /*#__PURE__*/React.createElement("h3", null, "Bookmarks"), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].bookmarks
   }, bookmarks.map(bookmark => /*#__PURE__*/React.createElement(_Bookmark_Bookmark__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: bookmark._id,
@@ -868,4 +868,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.ab6a19b660bf93a73b63951842b91a13.js.map
+//# sourceMappingURL=App.c1fc099920889c6b0078874e9946df01.js.map
