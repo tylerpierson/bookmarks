@@ -351,7 +351,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `body {
   display: flex;
   align-items: center;
   color: white;
-}`, "",{"version":3,"sources":["webpack://./src/App.module.scss"],"names":[],"mappings":"AAAA;EACI,2BAAA;EACA,WAAA;EACA,aAAA;EACA,SAAA;EACA,UAAA;EACA,uBAAA;EACA,aAAA;EACA,mBAAA;EACA,YAAA;AACJ","sourcesContent":["body {\n    background: rgb(41, 46, 74);\n    width: 100%;\n    height: 100vh;\n    margin: 0;\n    padding: 0;\n    font-family: sans-serif;\n    display: flex;\n    align-items: center;\n    color: white;\n}\n"],"sourceRoot":""}]);
+  font-size: 2rem;
+  letter-spacing: 2px;
+}`, "",{"version":3,"sources":["webpack://./src/App.module.scss"],"names":[],"mappings":"AAAA;EACI,2BAAA;EACA,WAAA;EACA,aAAA;EACA,SAAA;EACA,UAAA;EACA,uBAAA;EACA,aAAA;EACA,mBAAA;EACA,YAAA;EACA,eAAA;EACA,mBAAA;AACJ","sourcesContent":["body {\n    background: rgb(41, 46, 74);\n    width: 100%;\n    height: 100vh;\n    margin: 0;\n    padding: 0;\n    font-family: sans-serif;\n    display: flex;\n    align-items: center;\n    color: white;\n    font-size: 2rem;\n    letter-spacing: 2px;\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
@@ -506,7 +508,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.lP8bUeE__NPUKEd25ulU {
   flex: 0.7;
 }
 .lP8bUeE__NPUKEd25ulU .xIp1lwxlhmnIlARjUYwN .xqIdbaiF17DoAye5kkLw {
-  color: #000;
+  color: rgba(25, 5, 58, 0.5);
   display: inline-block;
   font-size: 2.5rem;
   height: 3.5rem;
@@ -514,10 +516,16 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.lP8bUeE__NPUKEd25ulU {
   border: 0;
   background-color: aliceblue;
 }
+.lP8bUeE__NPUKEd25ulU .xIp1lwxlhmnIlARjUYwN .xqIdbaiF17DoAye5kkLw:focus {
+  outline: none !important;
+  border: 3px solid rgb(250, 208, 0);
+  box-shadow: 0 0 10px #719ECE;
+  color: rgba(25, 5, 58, 0.8);
+}
 .lP8bUeE__NPUKEd25ulU .lFT9t9MxsUP6IDCopSXh {
   flex: 1.5;
   margin-left: 150px;
-}`, "",{"version":3,"sources":["webpack://./src/components/BookmarkList/BookmarkList.module.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;AACF;AAAE;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,YAAA;EACA,yCAAA;EACA,6BAAA;EACA,gCAAA;EACA,wCAAA;EACA,yCAAA;EACA,aAAA;EACA,4CAAA;EACA,2BAAA;EAYA,SAAA;AATJ;AADI;EACE,WAAA;EACA,qBAAA;EACA,iBAAA;EACA,cAAA;EACA,YAAA;EACA,SAAA;EACA,2BAAA;AAGN;AAGE;EACE,SAAA;EACA,kBAAA;AADJ","sourcesContent":[".container {\n  display: flex;\n  .inputContainer {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    font-size: 2rem;\n    color: white;\n    text-shadow: 1px 1px 1px rgb(250, 208, 0);\n    border-top-right-radius: 20px;\n    border-bottom-right-radius: 20px;\n    border-right: 1px solid rgb(250, 208, 0);\n    border-bottom: 1px solid rgb(250, 208, 0);\n    padding: 2rem;\n    box-shadow: 25px 14px 100px rgb(69, 73, 102);\n    background: rgb(58, 63, 99);\n\n    .input {\n      color: #000;\n      display: inline-block;\n      font-size: 2.5rem;\n      height: 3.5rem;\n      margin: 1rem;\n      border: 0;\n      background-color: aliceblue;\n    }\n\n    flex: .7\n  }\n\n  .bookmarksContainer {\n    flex: 1.5;\n    margin-left: 150px; \n  }\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/BookmarkList/BookmarkList.module.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;AACF;AAAE;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,YAAA;EACA,yCAAA;EACA,6BAAA;EACA,gCAAA;EACA,wCAAA;EACA,yCAAA;EACA,aAAA;EACA,4CAAA;EACA,2BAAA;EAmBA,SAAA;AAhBJ;AADI;EACE,2BAAA;EACA,qBAAA;EACA,iBAAA;EACA,cAAA;EACA,YAAA;EACA,SAAA;EACA,2BAAA;AAGN;AAAI;EACE,wBAAA;EACA,kCAAA;EACA,4BAAA;EACA,2BAAA;AAEN;AAIE;EACE,SAAA;EACA,kBAAA;AAFJ","sourcesContent":[".container {\n  display: flex;\n  .inputContainer {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    font-size: 2rem;\n    color: white;\n    text-shadow: 1px 1px 1px rgb(250, 208, 0);\n    border-top-right-radius: 20px;\n    border-bottom-right-radius: 20px;\n    border-right: 1px solid rgb(250, 208, 0);\n    border-bottom: 1px solid rgb(250, 208, 0);\n    padding: 2rem;\n    box-shadow: 25px 14px 100px rgb(69, 73, 102);\n    background: rgb(58, 63, 99);\n\n    .input {\n      color: rgba(25, 5, 58, 0.5);\n      display: inline-block;\n      font-size: 2.5rem;\n      height: 3.5rem;\n      margin: 1rem;\n      border: 0;\n      background-color: aliceblue;\n    }\n\n    .input:focus{\n      outline: none !important;\n      border: 3px solid rgb(250, 208, 0);\n      box-shadow: 0 0 10px #719ECE;\n      color: rgba(25, 5, 58, 0.8);\n    }\n\n    flex: .7\n  }\n\n  .bookmarksContainer {\n    flex: 1.5;\n    margin-left: 150px; \n  }\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"container": `lP8bUeE__NPUKEd25ulU`,
@@ -857,4 +865,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.958d6faa1822cbc3e7b2dc7917fdc7e0.js.map
+//# sourceMappingURL=App.2862be976a8e077a7839b34b58fb17cd.js.map
