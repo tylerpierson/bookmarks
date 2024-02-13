@@ -16,6 +16,7 @@ export default function BookmarkList ({
     }
 
     return(
+        <>
         <div className={styles.bookmarklist}>
             <div className={styles.banner}>
                 <h1>Tyler's Bookmarks</h1>
@@ -42,7 +43,10 @@ export default function BookmarkList ({
                 e.key === 'Enter' && handleCreateBookmark()
             }}
             />
-             <h3>Bookmarks</h3>
+             
+        </div>
+        <div className={styles.bookmarks}>
+        <h3>Bookmarks</h3>
         {bookmarks.map(bookmark => (
             <Bookmark 
                 key={bookmark._id} 
@@ -52,5 +56,6 @@ export default function BookmarkList ({
             />
         ))}
         </div>
+        </>
     )
 }

@@ -258,7 +258,7 @@ function BookmarkList(_ref) {
       createBookmark();
     }
   }
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].bookmarklist
   }, /*#__PURE__*/React.createElement("div", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].banner
@@ -286,12 +286,14 @@ function BookmarkList(_ref) {
     onKeyDown: e => {
       e.key === 'Enter' && handleCreateBookmark();
     }
-  }), /*#__PURE__*/React.createElement("h3", null, "Bookmarks"), bookmarks.map(bookmark => /*#__PURE__*/React.createElement(_Bookmark_Bookmark__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  })), /*#__PURE__*/React.createElement("div", {
+    className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].bookmarks
+  }, /*#__PURE__*/React.createElement("h3", null, "Bookmarks"), bookmarks.map(bookmark => /*#__PURE__*/React.createElement(_Bookmark_Bookmark__WEBPACK_IMPORTED_MODULE_1__["default"], {
     key: bookmark._id,
     bookmark: bookmark,
     buttonAction: deleteBookmark,
     buttonText: 'Delete'
-  })));
+  }))));
 }
 
 /***/ }),
@@ -334,36 +336,12 @@ root.render( /*#__PURE__*/React.createElement(react__WEBPACK_IMPORTED_MODULE_0__
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  background: blueviolet;
-  font-family: sans-serif;
-}
-
-.KTmxx2sH00E53HXHCND1 {
+  background-color: blueviolet;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.KTmxx2sH00E53HXHCND1 img {
-  width: 50%;
-  max-height: 300px;
-}
-.KTmxx2sH00E53HXHCND1 h1 {
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  text-shadow: #000 1px 1px 10px;
-}`, "",{"version":3,"sources":["webpack://./src/App.module.scss"],"names":[],"mappings":"AAAA;EACI,SAAA;EACA,iBAAA;EACA,aAAA;EACA,uBAAA;EACA,2BAAA;EACA,sBAAA;EACA,uBAAA;AACJ;;AAEA;EACI,WAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,sBAAA;AACJ;AAAI;EACI,UAAA;EACA,iBAAA;AAER;AAAI;EACI,WAAA;EACA,kBAAA;EACA,WAAA;EACA,8BAAA;AAER","sourcesContent":["body {\n    margin: 0;\n    min-height: 100vh;\n    display: flex;\n    align-items: flex-start;\n    justify-content: flex-start;\n    background: blueviolet;\n    font-family: sans-serif;\n}\n\n.banner{\n    width: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    img {\n        width: 50%;\n        max-height: 300px;\n    }\n    h1 {\n        width: 100%;\n        text-align: center;\n        color: #fff;\n        text-shadow: #000 1px 1px 10px;\n    }\n}\n"],"sourceRoot":""}]);
+  height: 100vh;
+}`, "",{"version":3,"sources":["webpack://./src/App.module.scss"],"names":[],"mappings":"AAAA;EACI,4BAAA;EACA,WAAA;EACA,aAAA;AACJ","sourcesContent":["body {\n    background-color: blueviolet;\n    width: 100%;\n    height: 100vh;\n}\n"],"sourceRoot":""}]);
 // Exports
-___CSS_LOADER_EXPORT___.locals = {
-	"banner": `KTmxx2sH00E53HXHCND1`
-};
+___CSS_LOADER_EXPORT___.locals = {};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
@@ -387,64 +365,9 @@ ___CSS_LOADER_EXPORT___.locals = {
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.k6ypUdZIToQcx5q02lTg {
-  background-color: white;
-  border-radius: 30px;
-  width: 80%;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  transition: 0.4s ease;
-  margin: 0.1rem 0;
-}
-.k6ypUdZIToQcx5q02lTg .TKdPfLWuQZ3wBBMgYFyM {
-  /*! keep */
-  font-size: 1.2rem;
-  color: #000;
-}
-.k6ypUdZIToQcx5q02lTg .TKdPfLWuQZ3wBBMgYFyM .T8Mtf4mIRTymwZKFM12v .aYxmGpUOPwLytwopcsyn {
-  color: grey;
-}
-.k6ypUdZIToQcx5q02lTg .TKdPfLWuQZ3wBBMgYFyM .aYxmGpUOPwLytwopcsyn {
-  text-decoration: none;
-  color: black;
-}
-.k6ypUdZIToQcx5q02lTg .JSmS6vn316ABbTaYqDzk {
-  background-color: rgba(25, 5, 58, 0.8);
-  text-transform: uppercase;
-  cursor: pointer;
-  color: ghostwhite;
-  padding: 0.25rem 1rem;
-  font-size: 1rem;
-  font-weight: 700;
-  display: inline-block;
-  margin-left: 1rem;
-  border: 2px;
-  border-radius: 30px;
-  box-shadow: 0 2px 5px rgba(23, 5, 58, 0.5);
-  transition: 0.3s ease;
-}
-.k6ypUdZIToQcx5q02lTg .JSmS6vn316ABbTaYqDzk:hover {
-  background-color: white;
-  color: black;
-  border: 2px solid black;
-  transform: scale(1.1);
-  transition: 0.3s ease;
-}
-
-.k6ypUdZIToQcx5q02lTg:hover {
-  box-shadow: 0 0 10px solid white;
-  transform: scale(1.1);
-  transition: 0.4s ease;
-}`, "",{"version":3,"sources":["webpack://./src/components/Bookmark/Bookmark.module.scss"],"names":[],"mappings":"AAAA;EACI,uBAAA;EACA,mBAAA;EACA,UAAA;EACA,aAAA;EACA,aAAA;EACA,8BAAA;EACA,qBAAA;EACA,gBAAA;AACJ;AAAI;EACI,UAAA;EACA,iBAAA;EACA,WAAA;AAER;AAAY;EACI,WAAA;AAEhB;AACQ;EACI,qBAAA;EACA,YAAA;AACZ;AAEI;EACI,sCAAA;EACA,yBAAA;EACA,eAAA;EACA,iBAAA;EACA,qBAAA;EACA,eAAA;EACA,gBAAA;EACA,qBAAA;EACA,iBAAA;EACA,WAAA;EACA,mBAAA;EACA,0CAAA;EACA,qBAAA;AAAR;AAEI;EACI,uBAAA;EACA,YAAA;EACA,uBAAA;EACA,qBAAA;EACA,qBAAA;AAAR;;AAGA;EACI,gCAAA;EACA,qBAAA;EACA,qBAAA;AAAJ","sourcesContent":[".bookmarkContainer {\n    background-color:white;\n    border-radius: 30px;\n    width: 80%;\n    padding: 1rem;\n    display: flex;\n    justify-content: space-between;\n    transition: .4s ease;\n    margin: .1rem 0;\n    .bookmark {\n        /*! keep */\n        font-size: 1.2rem;\n        color: #000;\n        .bookmarkUrl{\n            .a{\n                color: grey;\n            }\n        }\n        .a {\n            text-decoration: none;\n            color: black;\n        }\n    }\n    .button {\n        background-color: rgba(25, 5, 58, 0.8);\n        text-transform: uppercase;\n        cursor: pointer;\n        color: ghostwhite;\n        padding: 0.25rem 1rem;\n        font-size: 1rem;\n        font-weight: 700;\n        display: inline-block;\n        margin-left: 1rem;\n        border: 2px;\n        border-radius: 30px;\n        box-shadow: 0 2px 5px rgba(23, 5, 58, 0.5);\n        transition: .3s ease;\n    }\n    .button:hover{\n        background-color: white;\n        color: black;\n        border: 2px solid black;\n        transform: scale(1.1);\n        transition: .3s ease;\n    }\n}\n.bookmarkContainer:hover{\n    box-shadow: 0 0 10px solid white;\n    transform: scale(1.1);\n    transition: .4s ease;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ``, "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
 // Exports
-___CSS_LOADER_EXPORT___.locals = {
-	"bookmarkContainer": `k6ypUdZIToQcx5q02lTg`,
-	"bookmark": `TKdPfLWuQZ3wBBMgYFyM`,
-	"bookmarkUrl": `T8Mtf4mIRTymwZKFM12v`,
-	"a": `aYxmGpUOPwLytwopcsyn`,
-	"button": `JSmS6vn316ABbTaYqDzk`
-};
+___CSS_LOADER_EXPORT___.locals = {};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
@@ -468,35 +391,9 @@ ___CSS_LOADER_EXPORT___.locals = {
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.Y9rNf4f3lleHsoKVWRIg {
-  display: flex;
-  height: 91.5vh;
-  background: linear-gradient(45deg, #999 5%, #fff 10%, #ccc 30%, #ddd 50%, #ccc 70%, #fff 80%, #999 95%);
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  color: #000;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border: 1px solid rgba(23, 5, 58, 0.1);
-  padding: 2rem;
-  box-shadow: 2px 14px 10px #080808;
-}
-.Y9rNf4f3lleHsoKVWRIg .xqIdbaiF17DoAye5kkLw {
-  color: #000;
-  display: inline-block;
-  font-size: 2.5rem;
-  height: 3.5rem;
-  margin: 1rem;
-  border: 0;
-  background-color: aliceblue;
-}`, "",{"version":3,"sources":["webpack://./src/components/BookmarkList/BookmarkList.module.scss"],"names":[],"mappings":"AAAA;EACI,aAAA;EACA,cAAA;EACA,uGAAA;EAUA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,WAAA;EACA,6BAAA;EACA,gCAAA;EACA,sCAAA;EACA,aAAA;EACA,iCAAA;AARJ;AASI;EACI,WAAA;EACA,qBAAA;EACA,iBAAA;EACA,cAAA;EACA,YAAA;EACA,SAAA;EACA,2BAAA;AAPR","sourcesContent":[".bookmarklist {\n    display: flex;\n    height: 91.5vh;\n    background: linear-gradient(\n    45deg,\n    #999 5%,\n    #fff 10%,\n    #ccc 30%,\n    #ddd 50%,\n    #ccc 70%,\n    #fff 80%,\n    #999 95%\n  );\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    font-size: 2rem;\n    color: #000;\n    border-top-right-radius: 20px;\n    border-bottom-right-radius: 20px;\n    border: 1px solid rgba(23,5, 58, 0.1);\n    padding: 2rem;\n    box-shadow: 2px 14px 10px #080808;\n    .input {\n        color:#000;\n        display: inline-block;\n        font-size: 2.5rem;\n        height: 3.5rem;\n        margin: 1rem;\n        border: 0;\n        background-color:aliceblue;\n    }\n    \n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ``, "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
 // Exports
-___CSS_LOADER_EXPORT___.locals = {
-	"bookmarklist": `Y9rNf4f3lleHsoKVWRIg`,
-	"input": `xqIdbaiF17DoAye5kkLw`
-};
+___CSS_LOADER_EXPORT___.locals = {};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
@@ -829,4 +726,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.43c710b1200a6ab4d55d3ef1c2da3be8.js.map
+//# sourceMappingURL=App.bad9d146a61d5b554aa7ea31157e739b.js.map
