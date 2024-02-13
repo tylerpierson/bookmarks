@@ -27,6 +27,10 @@
             text-decoration: none;
             color: white;
         }
+        border: 1px solid red;
+        max-width: 265px;
+        overflow: hidden;
+        white-space: no-wrap;
     }
 
     .button {
