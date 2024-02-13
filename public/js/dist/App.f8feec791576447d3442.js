@@ -508,6 +508,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.lP8bUeE__NPUKEd25ulU {
   flex: 0.7;
 }
 .lP8bUeE__NPUKEd25ulU .xIp1lwxlhmnIlARjUYwN .xqIdbaiF17DoAye5kkLw {
+  border-radius: 10px;
   color: rgba(25, 5, 58, 0.5);
   display: inline-block;
   font-size: 2.5rem;
@@ -525,7 +526,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.lP8bUeE__NPUKEd25ulU {
 .lP8bUeE__NPUKEd25ulU .lFT9t9MxsUP6IDCopSXh {
   flex: 1.5;
   margin-left: 150px;
-}`, "",{"version":3,"sources":["webpack://./src/components/BookmarkList/BookmarkList.module.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;AACF;AAAE;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,YAAA;EACA,yCAAA;EACA,6BAAA;EACA,gCAAA;EACA,wCAAA;EACA,yCAAA;EACA,aAAA;EACA,4CAAA;EACA,2BAAA;EAmBA,SAAA;AAhBJ;AADI;EACE,2BAAA;EACA,qBAAA;EACA,iBAAA;EACA,cAAA;EACA,YAAA;EACA,SAAA;EACA,2BAAA;AAGN;AAAI;EACE,wBAAA;EACA,kCAAA;EACA,4BAAA;EACA,2BAAA;AAEN;AAIE;EACE,SAAA;EACA,kBAAA;AAFJ","sourcesContent":[".container {\n  display: flex;\n  .inputContainer {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    font-size: 2rem;\n    color: white;\n    text-shadow: 1px 1px 1px rgb(250, 208, 0);\n    border-top-right-radius: 20px;\n    border-bottom-right-radius: 20px;\n    border-right: 1px solid rgb(250, 208, 0);\n    border-bottom: 1px solid rgb(250, 208, 0);\n    padding: 2rem;\n    box-shadow: 25px 14px 100px rgb(69, 73, 102);\n    background: rgb(58, 63, 99);\n\n    .input {\n      color: rgba(25, 5, 58, 0.5);\n      display: inline-block;\n      font-size: 2.5rem;\n      height: 3.5rem;\n      margin: 1rem;\n      border: 0;\n      background-color: aliceblue;\n    }\n\n    .input:focus{\n      outline: none !important;\n      border: 3px solid rgb(250, 208, 0);\n      box-shadow: 0 0 10px #719ECE;\n      color: rgba(25, 5, 58, 0.8);\n    }\n\n    flex: .7\n  }\n\n  .bookmarksContainer {\n    flex: 1.5;\n    margin-left: 150px; \n  }\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/BookmarkList/BookmarkList.module.scss"],"names":[],"mappings":"AAAA;EACE,aAAA;AACF;AAAE;EACE,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,YAAA;EACA,yCAAA;EACA,6BAAA;EACA,gCAAA;EACA,wCAAA;EACA,yCAAA;EACA,aAAA;EACA,4CAAA;EACA,2BAAA;EAoBA,SAAA;AAjBJ;AADI;EACE,mBAAA;EACA,2BAAA;EACA,qBAAA;EACA,iBAAA;EACA,cAAA;EACA,YAAA;EACA,SAAA;EACA,2BAAA;AAGN;AAAI;EACE,wBAAA;EACA,kCAAA;EACA,4BAAA;EACA,2BAAA;AAEN;AAIE;EACE,SAAA;EACA,kBAAA;AAFJ","sourcesContent":[".container {\n  display: flex;\n  .inputContainer {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    font-size: 2rem;\n    color: white;\n    text-shadow: 1px 1px 1px rgb(250, 208, 0);\n    border-top-right-radius: 20px;\n    border-bottom-right-radius: 20px;\n    border-right: 1px solid rgb(250, 208, 0);\n    border-bottom: 1px solid rgb(250, 208, 0);\n    padding: 2rem;\n    box-shadow: 25px 14px 100px rgb(69, 73, 102);\n    background: rgb(58, 63, 99);\n\n    .input {\n      border-radius: 10px;\n      color: rgba(25, 5, 58, 0.5);\n      display: inline-block;\n      font-size: 2.5rem;\n      height: 3.5rem;\n      margin: 1rem;\n      border: 0;\n      background-color: aliceblue;\n    }\n\n    .input:focus{\n      outline: none !important;\n      border: 3px solid rgb(250, 208, 0);\n      box-shadow: 0 0 10px #719ECE;\n      color: rgba(25, 5, 58, 0.8);\n    }\n\n    flex: .7\n  }\n\n  .bookmarksContainer {\n    flex: 1.5;\n    margin-left: 150px; \n  }\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"container": `lP8bUeE__NPUKEd25ulU`,
@@ -865,4 +866,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.2862be976a8e077a7839b34b58fb17cd.js.map
+//# sourceMappingURL=App.191aab2176bf9911f1b96bd0c7d3a84a.js.map
