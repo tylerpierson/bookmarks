@@ -59,30 +59,6 @@ export default function App(){
         }
     }
 
-    //editBookmarks
-    const editBookmark = async () => {
-        const body = {...newBookmark}
-        const index = bookmarks.findIndex((bookmark) => bookmark._id === id)
-        try {
-            const response = await fetch(`/api/bookmarks/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(body)
-            })
-            const createdBookmark = await response.json()
-            const bookmarksCopy = [createdBookmark,...bookmarks]
-            setBookmarks(bookmarksCopy)
-            setNewBookmark({
-                title: '',
-                url: ''
-            })
-        } catch (error) {   
-            console.error(error)
-        }
-    }
-
     //deleteBookmarks
     const deleteBookmark = async (id) => {
         try {
@@ -101,6 +77,7 @@ export default function App(){
             console.error(error)
         }
     }
+    
     //moveToCompleted
     const moveToCompleted = async (id) => {
         try {

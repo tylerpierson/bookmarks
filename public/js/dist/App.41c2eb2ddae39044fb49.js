@@ -83,30 +83,6 @@ function App() {
     }
   };
 
-  //editBookmarks
-  const editBookmark = async () => {
-    const body = _objectSpread({}, newBookmark);
-    const index = bookmarks.findIndex(bookmark => bookmark._id === id);
-    try {
-      const response = await fetch("/api/bookmarks/".concat(id), {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-      });
-      const createdBookmark = await response.json();
-      const bookmarksCopy = [createdBookmark, ...bookmarks];
-      setBookmarks(bookmarksCopy);
-      setNewBookmark({
-        title: '',
-        url: ''
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   //deleteBookmarks
   const deleteBookmark = async id => {
     try {
@@ -125,6 +101,7 @@ function App() {
       console.error(error);
     }
   };
+
   //moveToCompleted
   const moveToCompleted = async id => {
     try {
@@ -193,39 +170,52 @@ function App() {
 /* harmony import */ var _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Bookmark.module.scss */ "./src/components/Bookmark/Bookmark.module.scss");
 
 
+
 function Bookmark(_ref) {
   let {
     bookmark,
-    deleteAction,
-    editAction
+    deleteAction
   } = _ref;
+  const [title, setTitle] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(bookmark.title);
+  const [url, setUrl] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(bookmark.url);
+  const handleTitleChange = e => {
+    console.log(e.target.value);
+    setTitle(e.target.value);
+  };
+  const handleUrlChange = e => {
+    console.log(e.target.value);
+    setUrl(e.target.value);
+  };
   const handleClick = e => {
     if (!e.target.closest('button')) {
       window.open(bookmark.url, '_blank');
     }
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].bookmarkContainer,
-    onClick: handleClick
+    className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].bookmarkContainer
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].bookmark
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].a,
-    target: "_blank",
-    href: bookmark.url
-  }, bookmark.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].titleInput,
+    value: title,
+    onChange: handleTitleChange
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].bookmarkUrl
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].a,
-    target: "_blank",
-    href: bookmark.url
-  }, bookmark.url))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].urlInput,
+    value: url,
+    onChange: handleUrlChange
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].button,
     onClick: () => deleteAction(bookmark._id)
-  }, "Delete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].button,
-    onClick: () => editAction(bookmark._id)
-  }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "Delete"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].visitBtnContainer,
+    onClick: handleClick
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+    className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].visitBtn,
+    target: "_blank",
+    href: bookmark.url
+  }, "VISIT")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].animation
   })));
 }
@@ -419,19 +409,29 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.k6ypUdZIToQcx5q02lTg {
   overflow: hidden;
 }
 .k6ypUdZIToQcx5q02lTg .TKdPfLWuQZ3wBBMgYFyM {
-  /*! keep */
-  font-size: 1.2rem;
-  color: #000;
-  max-width: 270px;
+  width: 500px;
   overflow: hidden;
   white-space: no-wrap;
+  font-size: 1.2rem;
+  color: #000;
 }
-.k6ypUdZIToQcx5q02lTg .TKdPfLWuQZ3wBBMgYFyM .T8Mtf4mIRTymwZKFM12v .aYxmGpUOPwLytwopcsyn {
+.k6ypUdZIToQcx5q02lTg .TKdPfLWuQZ3wBBMgYFyM .z71re3GXepDtxEeDfB3S {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: #FFF;
+  font-size: 20px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+.k6ypUdZIToQcx5q02lTg .TKdPfLWuQZ3wBBMgYFyM .YHQ0LcLI3BKL9zhgV2cs {
+  width: 100%;
+  border: none;
+  background: transparent;
   color: grey;
-}
-.k6ypUdZIToQcx5q02lTg .TKdPfLWuQZ3wBBMgYFyM .aYxmGpUOPwLytwopcsyn {
-  text-decoration: none;
-  color: white;
+  font-size: 16px;
+  letter-spacing: 2px;
+  cursor: pointer;
 }
 .k6ypUdZIToQcx5q02lTg .JSmS6vn316ABbTaYqDzk {
   color: rgb(250, 208, 0);
@@ -444,7 +444,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.k6ypUdZIToQcx5q02lTg {
   font-size: 1rem;
   font-weight: 700;
   display: inline-block;
-  margin-right: 1rem;
+  margin-right: 3rem;
   border-radius: 30px;
   transition: 0.3s ease;
   z-index: 2;
@@ -458,6 +458,27 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.k6ypUdZIToQcx5q02lTg {
   transition: 0.3s ease;
   box-shadow: none;
 }
+.k6ypUdZIToQcx5q02lTg .QZwFw9r3_zFvhUP3Ck3C {
+  transform: rotate(-90deg);
+  width: 90px;
+  height: 55px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 12px;
+  right: -19px;
+}
+.k6ypUdZIToQcx5q02lTg .QZwFw9r3_zFvhUP3Ck3C .qhNOBMDyjIchlC6YpsB_ {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(58, 63, 99);
+}
+.k6ypUdZIToQcx5q02lTg .QZwFw9r3_zFvhUP3Ck3C:hover {
+  cursor: pointer;
+}
 .k6ypUdZIToQcx5q02lTg .vYwlXVdYnlZ_BSI3asJQ {
   width: 10px;
   height: 10px;
@@ -466,7 +487,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.k6ypUdZIToQcx5q02lTg {
   border: 2px solid rgb(250, 208, 0);
   position: absolute;
   top: 50%;
-  right: calc(100% + 10px);
+  right: calc(100% + 40px);
   transform: translate(-50%, -50%);
   z-index: 1;
   transition: 0.5s ease;
@@ -482,14 +503,16 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.k6ypUdZIToQcx5q02lTg {
 .k6ypUdZIToQcx5q02lTg:hover .vYwlXVdYnlZ_BSI3asJQ {
   transform: scale(100);
   z-index: -1000;
-}`, "",{"version":3,"sources":["webpack://./src/components/Bookmark/Bookmark.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,mBAAA;EACA,wCAAA;EACA,yCAAA;EACA,4CAAA;EACA,2BAAA;EACA,YAAA;EACA,aAAA;EACA,aAAA;EACA,8BAAA;EACA,qBAAA;EACA,cAAA;EACA,kBAAA;EACA,gBAAA;AACJ;AACI;EACI,UAAA;EACA,iBAAA;EACA,WAAA;EAUA,gBAAA;EACA,gBAAA;EACA,oBAAA;AARR;AAFY;EACI,WAAA;AAIhB;AADQ;EACI,qBAAA;EACA,YAAA;AAGZ;AAII;EACI,uBAAA;EACA,yFAAA;EACA,iCAAA;EACA,YAAA;EACA,yBAAA;EACA,eAAA;EACA,qBAAA;EACA,eAAA;EACA,gBAAA;EACA,qBAAA;EACA,kBAAA;EACA,mBAAA;EACA,qBAAA;EACA,UAAA;AAFR;AAIQ;EACI,gCAAA;EACA,iBAAA;EACA,WAAA;EACA,0CAAA;EACA,qBAAA;EACA,qBAAA;EACA,gBAAA;AAFZ;AAMI;EACI,WAAA;EACA,YAAA;EACA,kBAAA;EACA,6BAAA;EACA,kCAAA;EACA,kBAAA;EACA,QAAA;EACA,wBAAA;EACA,gCAAA;EACA,UAAA;EACA,qBAAA;AAJR;AAMQ;EACI,qBAAA;AAJZ;AAQI;EACI,gCAAA;EACA,qBAAA;EACA,qBAAA;AANR;AAQQ;EACI,qBAAA;EACA,cAAA;AANZ","sourcesContent":[".bookmarkContainer {\n    color: white;\n    border-radius: 20px;\n    border-right: 1px solid rgb(250, 208, 0);\n    border-bottom: 1px solid rgb(250, 208, 0);\n    box-shadow: 25px 14px 100px rgb(69, 73, 102);\n    background: rgb(58, 63, 99);\n    width: 475px;\n    padding: 1rem;\n    display: flex;\n    justify-content: space-between;\n    transition: .4s ease;\n    margin: 1rem 0;\n    position: relative;\n    overflow: hidden;\n\n    .bookmark {\n        /*! keep */\n        font-size: 1.2rem;\n        color: #000;\n        .bookmarkUrl {\n            .a {\n                color: grey;\n            }\n        }\n        .a {\n            text-decoration: none;\n            color: white;\n        }\n        max-width: 270px;\n        overflow: hidden;\n        white-space: no-wrap;\n    }\n\n    .button {\n        color: rgb(250, 208, 0);\n        background: linear-gradient(0.38turn, rgb(41, 46, 74), rgb(58,63,99), rgb(87, 93, 138));\n        border: 1px solid rgb(58,63,99);\n        height: 45px;\n        text-transform: uppercase;\n        cursor: pointer;\n        padding: 0.25rem 1rem;\n        font-size: 1rem;\n        font-weight: 700;\n        display: inline-block;\n        margin-right: 1rem;\n        border-radius: 30px;\n        transition: .3s ease;\n        z-index: 2;\n\n        &:hover {\n            background: rgba(25, 5, 58, 0.8);\n            color: ghostwhite;\n            border: 2px;\n            box-shadow: 0 2px 5px rgba(23, 5, 58, 0.5);\n            transform: scale(1.1);\n            transition: .3s ease;\n            box-shadow: none;\n        }\n    }\n\n    .animation {\n        width: 10px;\n        height: 10px;\n        border-radius: 50%;\n        background-color: transparent;\n        border: 2px solid rgb(250, 208, 0);\n        position: absolute;\n        top: 50%;\n        right: calc(100% + 10px);\n        transform: translate(-50%, -50%);\n        z-index: 1;\n        transition: .5s ease;\n\n        .bookmarkContainer:hover & {\n            transform: scale(100);\n        }\n    }\n    \n    &:hover {\n        box-shadow: 0 0 10px solid white;\n        transform: scale(1.1);\n        transition: .4s ease;\n\n        .animation {\n            transform: scale(100);\n            z-index: -1000;\n        }\n    }\n}\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/Bookmark/Bookmark.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,mBAAA;EACA,wCAAA;EACA,yCAAA;EACA,4CAAA;EACA,2BAAA;EACA,YAAA;EACA,aAAA;EACA,aAAA;EACA,8BAAA;EACA,qBAAA;EACA,cAAA;EACA,kBAAA;EACA,gBAAA;AACJ;AACI;EACI,YAAA;EACA,gBAAA;EACA,oBAAA;EACA,iBAAA;EACA,WAAA;AACR;AACQ;EACI,WAAA;EACA,YAAA;EACA,uBAAA;EACA,WAAA;EACA,eAAA;EACA,mBAAA;EACA,eAAA;AACZ;AACQ;EACI,WAAA;EACA,YAAA;EACA,uBAAA;EACA,WAAA;EACA,eAAA;EACA,mBAAA;EACA,eAAA;AACZ;AAGI;EACI,uBAAA;EACA,yFAAA;EACA,iCAAA;EACA,YAAA;EACA,yBAAA;EACA,eAAA;EACA,qBAAA;EACA,eAAA;EACA,gBAAA;EACA,qBAAA;EACA,kBAAA;EACA,mBAAA;EACA,qBAAA;EACA,UAAA;AADR;AAGQ;EACI,gCAAA;EACA,iBAAA;EACA,WAAA;EACA,0CAAA;EACA,qBAAA;EACA,qBAAA;EACA,gBAAA;AADZ;AAOI;EACI,yBAAA;EACA,WAAA;EACA,YAAA;EACA,SAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,kBAAA;EACA,YAAA;EACA,YAAA;AALR;AAMQ;EACI,qBAAA;EACA,eAAA;EACA,iBAAA;EACA,sBAAA;AAJZ;AAOQ;EACI,eAAA;AALZ;AAUI;EACI,WAAA;EACA,YAAA;EACA,kBAAA;EACA,6BAAA;EACA,kCAAA;EACA,kBAAA;EACA,QAAA;EACA,wBAAA;EACA,gCAAA;EACA,UAAA;EACA,qBAAA;AARR;AAUQ;EACI,qBAAA;AARZ;AAYI;EACI,gCAAA;EACA,qBAAA;EACA,qBAAA;AAVR;AAYQ;EACI,qBAAA;EACA,cAAA;AAVZ","sourcesContent":[".bookmarkContainer {\n    color: white;\n    border-radius: 20px;\n    border-right: 1px solid rgb(250, 208, 0);\n    border-bottom: 1px solid rgb(250, 208, 0);\n    box-shadow: 25px 14px 100px rgb(69, 73, 102);\n    background: rgb(58, 63, 99);\n    width: 475px;\n    padding: 1rem;\n    display: flex;\n    justify-content: space-between;\n    transition: .4s ease;\n    margin: 1rem 0;\n    position: relative;\n    overflow: hidden;\n\n    .bookmark {\n        width: 500px;\n        overflow: hidden;\n        white-space: no-wrap;\n        font-size: 1.2rem;\n        color: #000;\n\n        .titleInput {\n            width: 100%;\n            border: none;\n            background: transparent;\n            color: #FFF;\n            font-size: 20px;\n            letter-spacing: 2px;\n            cursor: pointer;\n        }\n        .urlInput {\n            width: 100%;\n            border: none;\n            background: transparent;\n            color: grey;\n            font-size: 16px;\n            letter-spacing: 2px;\n            cursor: pointer; \n        }\n    }\n\n    .button {\n        color: rgb(250, 208, 0);\n        background: linear-gradient(0.38turn, rgb(41, 46, 74), rgb(58,63,99), rgb(87, 93, 138));\n        border: 1px solid rgb(58,63,99);\n        height: 45px;\n        text-transform: uppercase;\n        cursor: pointer;\n        padding: 0.25rem 1rem;\n        font-size: 1rem;\n        font-weight: 700;\n        display: inline-block;\n        margin-right: 3rem;\n        border-radius: 30px;\n        transition: .3s ease;\n        z-index: 2;\n\n        &:hover {\n            background: rgba(25, 5, 58, 0.8);\n            color: ghostwhite;\n            border: 2px;\n            box-shadow: 0 2px 5px rgba(23, 5, 58, 0.5);\n            transform: scale(1.1);\n            transition: .3s ease;\n            box-shadow: none;\n        }\n\n\n    }\n\n    .visitBtnContainer{\n        transform: rotate(-90deg);\n        width: 90px;\n        height: 55px;\n        margin: 0;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        position: absolute;\n        bottom: 12px;\n        right: -19px;\n        .visitBtn {\n            text-decoration: none;\n            font-size: 14px;\n            font-weight: bold;\n            color: rgb(58, 63, 99);\n        }\n\n        &:hover {\n            cursor: pointer;\n        }\n    }\n\n\n    .animation {\n        width: 10px;\n        height: 10px;\n        border-radius: 50%;\n        background-color: transparent;\n        border: 2px solid rgb(250, 208, 0);\n        position: absolute;\n        top: 50%;\n        right: calc(100% + 40px);\n        transform: translate(-50%, -50%);\n        z-index: 1;\n        transition: .5s ease;\n\n        .bookmarkContainer:hover & {\n            transform: scale(100);\n        }\n    }\n    \n    &:hover {\n        box-shadow: 0 0 10px solid white;\n        transform: scale(1.1);\n        transition: .4s ease;\n\n        .animation {\n            transform: scale(100);\n            z-index: -1000;\n        }\n    }\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"bookmarkContainer": `k6ypUdZIToQcx5q02lTg`,
 	"bookmark": `TKdPfLWuQZ3wBBMgYFyM`,
-	"bookmarkUrl": `T8Mtf4mIRTymwZKFM12v`,
-	"a": `aYxmGpUOPwLytwopcsyn`,
+	"titleInput": `z71re3GXepDtxEeDfB3S`,
+	"urlInput": `YHQ0LcLI3BKL9zhgV2cs`,
 	"button": `JSmS6vn316ABbTaYqDzk`,
+	"visitBtnContainer": `QZwFw9r3_zFvhUP3Ck3C`,
+	"visitBtn": `qhNOBMDyjIchlC6YpsB_`,
 	"animation": `vYwlXVdYnlZ_BSI3asJQ`
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
@@ -915,4 +938,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.f02c761d8df15e4030a25ff5d8c9d349.js.map
+//# sourceMappingURL=App.7549fad8fad99d717559726046a2ac68.js.map
