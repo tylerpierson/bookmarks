@@ -9,9 +9,12 @@ h1{
   height: 100vh;
   max-height: 75vh;
   .inputContainer {
-    max-height: 300px;
+    width: 30%;
+    max-height: 500px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-size: 2rem;
     color: white;
     text-shadow: 1px 1px 1px rgb(250, 208, 0);
@@ -23,8 +26,13 @@ h1{
     box-shadow: 25px 14px 100px rgb(69, 73, 102);
     background: rgb(58, 63, 99);
 
+    .titleInputContainer {
+      margin-bottom: 50px;
+    }
+
     .inputTitle {
       margin: 0;
+      font-size: 50px;
     }
 
     .input {
@@ -33,7 +41,6 @@ h1{
       display: inline-block;
       font-size: 2.5rem;
       height: 3.5rem;
-      margin: 1rem;
       border: 0;
       background-color: aliceblue;
     }

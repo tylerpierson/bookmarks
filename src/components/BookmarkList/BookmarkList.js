@@ -26,7 +26,7 @@ export default function BookmarkList({
             <div className={styles.inputContainer}>
                 <div className={styles.banner}>
                 </div>
-                <div>
+                <div className={styles.titleInputContainer}>
                     <h3 className={styles.inputTitle}>Website Title:</h3>
                     <input
                         className={styles.input}
@@ -40,7 +40,7 @@ export default function BookmarkList({
                         }}
                     />
                 </div>
-                <div>
+                <div className={styles.urlInputContainer}>
                     <h3 className={styles.inputTitle}>URL:</h3><input
                         className={styles.input}
                         type="text"

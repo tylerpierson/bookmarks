@@ -274,7 +274,9 @@ function BookmarkList(_ref) {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].inputContainer
   }, /*#__PURE__*/React.createElement("div", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].banner
-  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
+  }), /*#__PURE__*/React.createElement("div", {
+    className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].titleInputContainer
+  }, /*#__PURE__*/React.createElement("h3", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].inputTitle
   }, "Website Title:"), /*#__PURE__*/React.createElement("input", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input,
@@ -288,7 +290,9 @@ function BookmarkList(_ref) {
     onKeyDown: e => {
       e.key === 'Enter' && handleCreateBookmark();
     }
-  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
+  })), /*#__PURE__*/React.createElement("div", {
+    className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].urlInputContainer
+  }, /*#__PURE__*/React.createElement("h3", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].inputTitle
   }, "URL:"), /*#__PURE__*/React.createElement("input", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input,
@@ -523,9 +527,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `h1 {
   max-height: 75vh;
 }
 .lP8bUeE__NPUKEd25ulU .xIp1lwxlhmnIlARjUYwN {
-  max-height: 300px;
+  width: 30%;
+  max-height: 500px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-size: 2rem;
   color: white;
   text-shadow: 1px 1px 1px rgb(250, 208, 0);
@@ -537,8 +544,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `h1 {
   box-shadow: 25px 14px 100px rgb(69, 73, 102);
   background: rgb(58, 63, 99);
 }
+.lP8bUeE__NPUKEd25ulU .xIp1lwxlhmnIlARjUYwN .EMpMW7bQmD40AbWHHDu8 {
+  margin-bottom: 50px;
+}
 .lP8bUeE__NPUKEd25ulU .xIp1lwxlhmnIlARjUYwN .lBq5HH22fCW57ZEDShut {
   margin: 0;
+  font-size: 50px;
 }
 .lP8bUeE__NPUKEd25ulU .xIp1lwxlhmnIlARjUYwN .xqIdbaiF17DoAye5kkLw {
   border-radius: 10px;
@@ -546,7 +557,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `h1 {
   display: inline-block;
   font-size: 2.5rem;
   height: 3.5rem;
-  margin: 1rem;
   border: 0;
   background-color: aliceblue;
 }
@@ -560,11 +570,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `h1 {
   padding: 0 150px;
   overflow: hidden;
   overflow-y: scroll;
-}`, "",{"version":3,"sources":["webpack://./src/components/BookmarkList/BookmarkList.module.scss"],"names":[],"mappings":"AAAA;EACE,kBAAA;EACA,yCAAA;AACF;;AAEA;EACE,aAAA;EACA,8BAAA;EACA,aAAA;EACA,gBAAA;AACF;AAAE;EACE,iBAAA;EACA,aAAA;EACA,sBAAA;EACA,eAAA;EACA,YAAA;EACA,yCAAA;EACA,6BAAA;EACA,gCAAA;EACA,wCAAA;EACA,yCAAA;EACA,aAAA;EACA,4CAAA;EACA,2BAAA;AAEJ;AAAI;EACE,SAAA;AAEN;AACI;EACE,mBAAA;EACA,2BAAA;EACA,qBAAA;EACA,iBAAA;EACA,cAAA;EACA,YAAA;EACA,SAAA;EACA,2BAAA;AACN;AAEI;EACE,wBAAA;EACA,kCAAA;EACA,4BAAA;EACA,2BAAA;AAAN;AAKE;EACE,gBAAA;EACA,gBAAA;EACA,kBAAA;AAHJ","sourcesContent":["h1{\n  text-align: center;\n  text-shadow: 1px 1px 1px rgb(250, 208, 0);\n}\n\n.container {\n  display: flex;\n  justify-content: space-between;\n  height: 100vh;\n  max-height: 75vh;\n  .inputContainer {\n    max-height: 300px;\n    display: flex;\n    flex-direction: column;\n    font-size: 2rem;\n    color: white;\n    text-shadow: 1px 1px 1px rgb(250, 208, 0);\n    border-top-right-radius: 20px;\n    border-bottom-right-radius: 20px;\n    border-right: 1px solid rgb(250, 208, 0);\n    border-bottom: 3px solid rgb(250, 208, 0);\n    padding: 5rem;\n    box-shadow: 25px 14px 100px rgb(69, 73, 102);\n    background: rgb(58, 63, 99);\n\n    .inputTitle {\n      margin: 0;\n    }\n\n    .input {\n      border-radius: 10px;\n      color: rgba(25, 5, 58, 0.5);\n      display: inline-block;\n      font-size: 2.5rem;\n      height: 3.5rem;\n      margin: 1rem;\n      border: 0;\n      background-color: aliceblue;\n    }\n\n    .input:focus{\n      outline: none !important;\n      border: 3px solid rgb(250, 208, 0);\n      box-shadow: 0 0 10px #719ECE;\n      color: rgba(25, 5, 58, 0.8);\n    }\n\n  }\n\n  .bookmarksContainer {\n    padding: 0 150px;\n    overflow: hidden;\n    overflow-y: scroll;\n  }\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/BookmarkList/BookmarkList.module.scss"],"names":[],"mappings":"AAAA;EACE,kBAAA;EACA,yCAAA;AACF;;AAEA;EACE,aAAA;EACA,8BAAA;EACA,aAAA;EACA,gBAAA;AACF;AAAE;EACE,UAAA;EACA,iBAAA;EACA,aAAA;EACA,sBAAA;EACA,uBAAA;EACA,mBAAA;EACA,eAAA;EACA,YAAA;EACA,yCAAA;EACA,6BAAA;EACA,gCAAA;EACA,wCAAA;EACA,yCAAA;EACA,aAAA;EACA,4CAAA;EACA,2BAAA;AAEJ;AAAI;EACE,mBAAA;AAEN;AACI;EACE,SAAA;EACA,eAAA;AACN;AAEI;EACE,mBAAA;EACA,2BAAA;EACA,qBAAA;EACA,iBAAA;EACA,cAAA;EACA,SAAA;EACA,2BAAA;AAAN;AAGI;EACE,wBAAA;EACA,kCAAA;EACA,4BAAA;EACA,2BAAA;AADN;AAME;EACE,gBAAA;EACA,gBAAA;EACA,kBAAA;AAJJ","sourcesContent":["h1{\n  text-align: center;\n  text-shadow: 1px 1px 1px rgb(250, 208, 0);\n}\n\n.container {\n  display: flex;\n  justify-content: space-between;\n  height: 100vh;\n  max-height: 75vh;\n  .inputContainer {\n    width: 30%;\n    max-height: 500px;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    font-size: 2rem;\n    color: white;\n    text-shadow: 1px 1px 1px rgb(250, 208, 0);\n    border-top-right-radius: 20px;\n    border-bottom-right-radius: 20px;\n    border-right: 1px solid rgb(250, 208, 0);\n    border-bottom: 3px solid rgb(250, 208, 0);\n    padding: 5rem;\n    box-shadow: 25px 14px 100px rgb(69, 73, 102);\n    background: rgb(58, 63, 99);\n\n    .titleInputContainer {\n      margin-bottom: 50px;\n    }\n\n    .inputTitle {\n      margin: 0;\n      font-size: 50px;\n    }\n\n    .input {\n      border-radius: 10px;\n      color: rgba(25, 5, 58, 0.5);\n      display: inline-block;\n      font-size: 2.5rem;\n      height: 3.5rem;\n      border: 0;\n      background-color: aliceblue;\n    }\n\n    .input:focus{\n      outline: none !important;\n      border: 3px solid rgb(250, 208, 0);\n      box-shadow: 0 0 10px #719ECE;\n      color: rgba(25, 5, 58, 0.8);\n    }\n\n  }\n\n  .bookmarksContainer {\n    padding: 0 150px;\n    overflow: hidden;\n    overflow-y: scroll;\n  }\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"container": `lP8bUeE__NPUKEd25ulU`,
 	"inputContainer": `xIp1lwxlhmnIlARjUYwN`,
+	"titleInputContainer": `EMpMW7bQmD40AbWHHDu8`,
 	"inputTitle": `lBq5HH22fCW57ZEDShut`,
 	"input": `xqIdbaiF17DoAye5kkLw`,
 	"bookmarksContainer": `lFT9t9MxsUP6IDCopSXh`
@@ -904,4 +915,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.e01865c5d982d55dc82e10bf71a953af.js.map
+//# sourceMappingURL=App.f02c761d8df15e4030a25ff5d8c9d349.js.map
