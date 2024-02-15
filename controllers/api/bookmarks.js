@@ -39,7 +39,7 @@ async function create(req, res, next){
 
 async function indexComplete(_, res ,next) {
     try {
-        const bookmarks = await Bookmark.find({ completed: true })
+        const bookmarks = await Bookmark.find({})
         res.locals.data.bookmarks = bookmarks
         next()
     } catch (error) {
@@ -49,7 +49,7 @@ async function indexComplete(_, res ,next) {
 
 async function indexNotComplete(_ ,res,next) {
     try {
-        const bookmarks = await Bookmark.find({ completed: false })
+        const bookmarks = await Bookmark.find({})
         res.locals.data.bookmarks = bookmarks
         next()
     } catch (error) {

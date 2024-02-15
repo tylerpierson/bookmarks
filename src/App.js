@@ -140,17 +140,17 @@ export default function App(){
         getBookmarks()
     }, [])
     return(
-        <>
-            <BookmarkList
-            newBookmark={newBookmark}
-            setNewBookmark={setNewBookmark}
-            createBookmark={createBookmark}
-            bookmarks={bookmarks}
-            updateBookmark={updateBookmark}
-            moveToCompleted={moveToCompleted}
-            completedBookmarks={completedBookmarks}
-            deleteBookmark={deleteBookmark}
-            />
-        </>
+        <div className={styles.App}>
+        <BookmarkList
+        newBookmark={newBookmark}
+        setNewBookmark={setNewBookmark}
+        createBookmark={createBookmark}
+        bookmarks={bookmarks}
+        updateBookmark={updateBookmark}
+        moveToCompleted={moveToCompleted}
+        completedBookmarks={completedBookmarks}
+        deleteBookmark={deleteBookmark}
+        />
+        </div>
     )
 }

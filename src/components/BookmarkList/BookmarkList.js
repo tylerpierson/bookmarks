@@ -27,7 +27,8 @@ export default function BookmarkList({
                 <div className={styles.banner}>
                 </div>
                 <div>
-                    Website Title:<input
+                    <h3 className={styles.inputTitle}>Website Title:</h3>
+                    <input
                         className={styles.input}
                         type="text"
                         value={newBookmark.title}
@@ -40,7 +41,7 @@ export default function BookmarkList({
                     />
                 </div>
                 <div>
-                    URL:<input
+                    <h3 className={styles.inputTitle}>URL:</h3><input
                         className={styles.input}
                         type="text"
                         value={newBookmark.url ? newBookmark.url : 'http://'}
