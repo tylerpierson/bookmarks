@@ -295,7 +295,7 @@ function BookmarkList(_ref) {
   }, "URL:"), /*#__PURE__*/React.createElement("input", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].input,
     type: "text",
-    value: newBookmark.url ? newBookmark.url : 'http://',
+    value: newBookmark.url ? newBookmark.url : 'https://',
     onChange: e => {
       setNewBookmark(_objectSpread(_objectSpread({}, newBookmark), {}, {
         url: e.target.value
@@ -956,4 +956,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.b815101d7b11edccfa4b12bbaa0dcc98.js.map
+//# sourceMappingURL=App.f569711aacbb3b3e4e9b5c6de1f99eea.js.map

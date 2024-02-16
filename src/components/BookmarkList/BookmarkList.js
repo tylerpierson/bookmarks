@@ -40,7 +40,7 @@ export default function BookmarkList({
                     <h3 className={styles.inputTitle}>URL:</h3><input
                         className={styles.input}
                         type="text"
-                        value={newBookmark.url ? newBookmark.url : 'http://'}
+                        value={newBookmark.url ? newBookmark.url : 'https://'}
                         onChange={(e) => {
                             setNewBookmark({ ...newBookmark, url: e.target.value })
                         }}
