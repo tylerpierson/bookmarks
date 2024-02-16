@@ -35,8 +35,9 @@ export default function App(){
     }
 
     // UpdateBookmark
-    const updateBookmark = async (id) => {
-        const body = { ...newBookmark }
+    const updateBookmark = async (id, bookmarkToUpdate) => {
+        console.log(id, bookmarkToUpdate)
+        const body = { ...bookmarkToUpdate }
         try {
             const response = await fetch(`/api/bookmarks/${id}`, {
                 method: 'PUT',
@@ -116,18 +117,18 @@ export default function App(){
     useEffect(() => {
         getBookmarks()
     }, [])
-    return(
+    return (
         <div className={styles.App}>
-        <BookmarkList
-        newBookmark={newBookmark}
-        setNewBookmark={setNewBookmark}
-        createBookmark={createBookmark}
-        bookmarks={bookmarks}
-        updateBookmark={updateBookmark}
-        moveToCompleted={moveToCompleted}
-        completedBookmarks={completedBookmarks}
-        deleteBookmark={deleteBookmark}
-        />
+            <BookmarkList
+                newBookmark={newBookmark}
+                setNewBookmark={setNewBookmark}
+                createBookmark={createBookmark}
+                bookmarks={bookmarks}
+                updateBookmark={updateBookmark}
+                moveToCompleted={moveToCompleted}
+                completedBookmarks={completedBookmarks}
+                deleteBookmark={deleteBookmark}
+            />
         </div>
     )
 }

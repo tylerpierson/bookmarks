@@ -56,8 +56,9 @@ function App() {
   };
 
   // UpdateBookmark
-  const updateBookmark = async id => {
-    const body = _objectSpread({}, newBookmark);
+  const updateBookmark = async (id, bookmarkToUpdate) => {
+    console.log(id, bookmarkToUpdate);
+    const body = _objectSpread({}, bookmarkToUpdate);
     try {
       const response = await fetch("/api/bookmarks/".concat(id), {
         method: 'PUT',
@@ -170,21 +171,27 @@ function App() {
 /* harmony import */ var _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Bookmark.module.scss */ "./src/components/Bookmark/Bookmark.module.scss");
 
 
-
 function Bookmark(_ref) {
   let {
     bookmark,
-    deleteAction
+    deleteAction,
+    updateBookmark
   } = _ref;
   const [title, setTitle] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(bookmark.title);
   const [url, setUrl] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(bookmark.url);
   const handleTitleChange = e => {
-    console.log(e.target.value);
     setTitle(e.target.value);
   };
   const handleUrlChange = e => {
-    console.log(e.target.value);
     setUrl(e.target.value);
+  };
+  const handleSubmit = e => {
+    if (e.key === 'Enter') {
+      updateBookmark(bookmark._id, {
+        [e.target.name]: e.target.value
+      });
+      e.target.blur();
+    }
   };
   const handleClick = e => {
     if (!e.target.closest('button')) {
@@ -193,18 +200,22 @@ function Bookmark(_ref) {
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].bookmarkContainer
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].bookmark
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    name: "title",
     className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].titleInput,
     value: title,
-    onChange: handleTitleChange
+    onChange: handleTitleChange,
+    onKeyDown: handleSubmit
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].bookmarkUrl
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    name: "url",
     className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].urlInput,
     value: url,
-    onChange: handleUrlChange
+    onChange: handleUrlChange,
+    onKeyDown: handleSubmit
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     className: _Bookmark_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].button,
     onClick: () => deleteAction(bookmark._id)
@@ -247,16 +258,13 @@ function BookmarkList(_ref) {
     createBookmark,
     setNewBookmark,
     bookmarks,
-    updateBookmark,
-    deleteBookmark
+    deleteBookmark,
+    updateBookmark
   } = _ref;
   function handleCreateBookmark() {
     if (newBookmark.title && newBookmark.url && newBookmark.url !== 'http://' && newBookmark.url !== 'https://') {
       createBookmark();
     }
-  }
-  function handleUpdateBookmark(bookmarkId) {
-    updateBookmark(bookmarkId);
   }
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Tyler's Bookmarks"), /*#__PURE__*/React.createElement("div", {
     className: _BookmarkList_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].container
@@ -304,7 +312,7 @@ function BookmarkList(_ref) {
     key: bookmark._id,
     bookmark: bookmark,
     deleteAction: deleteBookmark,
-    editAction: updateBookmark
+    updateBookmark: updateBookmark
   }))))));
 }
 
@@ -416,7 +424,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.k6ypUdZIToQcx5q02lTg {
   color: #000;
 }
 .k6ypUdZIToQcx5q02lTg .TKdPfLWuQZ3wBBMgYFyM .z71re3GXepDtxEeDfB3S {
-  width: 100%;
+  width: 90%;
   border: none;
   background: transparent;
   color: #FFF;
@@ -424,14 +432,24 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.k6ypUdZIToQcx5q02lTg {
   letter-spacing: 2px;
   cursor: pointer;
 }
+.k6ypUdZIToQcx5q02lTg .TKdPfLWuQZ3wBBMgYFyM .z71re3GXepDtxEeDfB3S:focus {
+  background-color: aliceblue;
+  color: rgb(41, 46, 74);
+  outline: none;
+}
 .k6ypUdZIToQcx5q02lTg .TKdPfLWuQZ3wBBMgYFyM .YHQ0LcLI3BKL9zhgV2cs {
-  width: 100%;
+  width: 90%;
   border: none;
   background: transparent;
   color: grey;
   font-size: 16px;
   letter-spacing: 2px;
   cursor: pointer;
+}
+.k6ypUdZIToQcx5q02lTg .TKdPfLWuQZ3wBBMgYFyM .YHQ0LcLI3BKL9zhgV2cs:focus {
+  background-color: aliceblue;
+  color: rgb(41, 46, 74);
+  outline: none;
 }
 .k6ypUdZIToQcx5q02lTg .JSmS6vn316ABbTaYqDzk {
   color: rgb(250, 208, 0);
@@ -503,7 +521,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.k6ypUdZIToQcx5q02lTg {
 .k6ypUdZIToQcx5q02lTg:hover .vYwlXVdYnlZ_BSI3asJQ {
   transform: scale(100);
   z-index: -1000;
-}`, "",{"version":3,"sources":["webpack://./src/components/Bookmark/Bookmark.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,mBAAA;EACA,wCAAA;EACA,yCAAA;EACA,4CAAA;EACA,2BAAA;EACA,YAAA;EACA,aAAA;EACA,aAAA;EACA,8BAAA;EACA,qBAAA;EACA,cAAA;EACA,kBAAA;EACA,gBAAA;AACJ;AACI;EACI,YAAA;EACA,gBAAA;EACA,oBAAA;EACA,iBAAA;EACA,WAAA;AACR;AACQ;EACI,WAAA;EACA,YAAA;EACA,uBAAA;EACA,WAAA;EACA,eAAA;EACA,mBAAA;EACA,eAAA;AACZ;AACQ;EACI,WAAA;EACA,YAAA;EACA,uBAAA;EACA,WAAA;EACA,eAAA;EACA,mBAAA;EACA,eAAA;AACZ;AAGI;EACI,uBAAA;EACA,yFAAA;EACA,iCAAA;EACA,YAAA;EACA,yBAAA;EACA,eAAA;EACA,qBAAA;EACA,eAAA;EACA,gBAAA;EACA,qBAAA;EACA,kBAAA;EACA,mBAAA;EACA,qBAAA;EACA,UAAA;AADR;AAGQ;EACI,gCAAA;EACA,iBAAA;EACA,WAAA;EACA,0CAAA;EACA,qBAAA;EACA,qBAAA;EACA,gBAAA;AADZ;AAOI;EACI,yBAAA;EACA,WAAA;EACA,YAAA;EACA,SAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,kBAAA;EACA,YAAA;EACA,YAAA;AALR;AAMQ;EACI,qBAAA;EACA,eAAA;EACA,iBAAA;EACA,sBAAA;AAJZ;AAOQ;EACI,eAAA;AALZ;AAUI;EACI,WAAA;EACA,YAAA;EACA,kBAAA;EACA,6BAAA;EACA,kCAAA;EACA,kBAAA;EACA,QAAA;EACA,wBAAA;EACA,gCAAA;EACA,UAAA;EACA,qBAAA;AARR;AAUQ;EACI,qBAAA;AARZ;AAYI;EACI,gCAAA;EACA,qBAAA;EACA,qBAAA;AAVR;AAYQ;EACI,qBAAA;EACA,cAAA;AAVZ","sourcesContent":[".bookmarkContainer {\n    color: white;\n    border-radius: 20px;\n    border-right: 1px solid rgb(250, 208, 0);\n    border-bottom: 1px solid rgb(250, 208, 0);\n    box-shadow: 25px 14px 100px rgb(69, 73, 102);\n    background: rgb(58, 63, 99);\n    width: 475px;\n    padding: 1rem;\n    display: flex;\n    justify-content: space-between;\n    transition: .4s ease;\n    margin: 1rem 0;\n    position: relative;\n    overflow: hidden;\n\n    .bookmark {\n        width: 500px;\n        overflow: hidden;\n        white-space: no-wrap;\n        font-size: 1.2rem;\n        color: #000;\n\n        .titleInput {\n            width: 100%;\n            border: none;\n            background: transparent;\n            color: #FFF;\n            font-size: 20px;\n            letter-spacing: 2px;\n            cursor: pointer;\n        }\n        .urlInput {\n            width: 100%;\n            border: none;\n            background: transparent;\n            color: grey;\n            font-size: 16px;\n            letter-spacing: 2px;\n            cursor: pointer; \n        }\n    }\n\n    .button {\n        color: rgb(250, 208, 0);\n        background: linear-gradient(0.38turn, rgb(41, 46, 74), rgb(58,63,99), rgb(87, 93, 138));\n        border: 1px solid rgb(58,63,99);\n        height: 45px;\n        text-transform: uppercase;\n        cursor: pointer;\n        padding: 0.25rem 1rem;\n        font-size: 1rem;\n        font-weight: 700;\n        display: inline-block;\n        margin-right: 3rem;\n        border-radius: 30px;\n        transition: .3s ease;\n        z-index: 2;\n\n        &:hover {\n            background: rgba(25, 5, 58, 0.8);\n            color: ghostwhite;\n            border: 2px;\n            box-shadow: 0 2px 5px rgba(23, 5, 58, 0.5);\n            transform: scale(1.1);\n            transition: .3s ease;\n            box-shadow: none;\n        }\n\n\n    }\n\n    .visitBtnContainer{\n        transform: rotate(-90deg);\n        width: 90px;\n        height: 55px;\n        margin: 0;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        position: absolute;\n        bottom: 12px;\n        right: -19px;\n        .visitBtn {\n            text-decoration: none;\n            font-size: 14px;\n            font-weight: bold;\n            color: rgb(58, 63, 99);\n        }\n\n        &:hover {\n            cursor: pointer;\n        }\n    }\n\n\n    .animation {\n        width: 10px;\n        height: 10px;\n        border-radius: 50%;\n        background-color: transparent;\n        border: 2px solid rgb(250, 208, 0);\n        position: absolute;\n        top: 50%;\n        right: calc(100% + 40px);\n        transform: translate(-50%, -50%);\n        z-index: 1;\n        transition: .5s ease;\n\n        .bookmarkContainer:hover & {\n            transform: scale(100);\n        }\n    }\n    \n    &:hover {\n        box-shadow: 0 0 10px solid white;\n        transform: scale(1.1);\n        transition: .4s ease;\n\n        .animation {\n            transform: scale(100);\n            z-index: -1000;\n        }\n    }\n}\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/Bookmark/Bookmark.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,mBAAA;EACA,wCAAA;EACA,yCAAA;EACA,4CAAA;EACA,2BAAA;EACA,YAAA;EACA,aAAA;EACA,aAAA;EACA,8BAAA;EACA,qBAAA;EACA,cAAA;EACA,kBAAA;EACA,gBAAA;AACJ;AACI;EACI,YAAA;EACA,gBAAA;EACA,oBAAA;EACA,iBAAA;EACA,WAAA;AACR;AACQ;EACI,UAAA;EACA,YAAA;EACA,uBAAA;EACA,WAAA;EACA,eAAA;EACA,mBAAA;EACA,eAAA;AACZ;AACY;EACI,2BAAA;EACA,sBAAA;EACA,aAAA;AAChB;AAEQ;EACI,UAAA;EACA,YAAA;EACA,uBAAA;EACA,WAAA;EACA,eAAA;EACA,mBAAA;EACA,eAAA;AAAZ;AAEY;EACI,2BAAA;EACA,sBAAA;EACA,aAAA;AAAhB;AAKI;EACI,uBAAA;EACA,yFAAA;EACA,iCAAA;EACA,YAAA;EACA,yBAAA;EACA,eAAA;EACA,qBAAA;EACA,eAAA;EACA,gBAAA;EACA,qBAAA;EACA,kBAAA;EACA,mBAAA;EACA,qBAAA;EACA,UAAA;AAHR;AAKQ;EACI,gCAAA;EACA,iBAAA;EACA,WAAA;EACA,0CAAA;EACA,qBAAA;EACA,qBAAA;EACA,gBAAA;AAHZ;AASI;EACI,yBAAA;EACA,WAAA;EACA,YAAA;EACA,SAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;EACA,kBAAA;EACA,YAAA;EACA,YAAA;AAPR;AAQQ;EACI,qBAAA;EACA,eAAA;EACA,iBAAA;EACA,sBAAA;AANZ;AASQ;EACI,eAAA;AAPZ;AAYI;EACI,WAAA;EACA,YAAA;EACA,kBAAA;EACA,6BAAA;EACA,kCAAA;EACA,kBAAA;EACA,QAAA;EACA,wBAAA;EACA,gCAAA;EACA,UAAA;EACA,qBAAA;AAVR;AAYQ;EACI,qBAAA;AAVZ;AAcI;EACI,gCAAA;EACA,qBAAA;EACA,qBAAA;AAZR;AAcQ;EACI,qBAAA;EACA,cAAA;AAZZ","sourcesContent":[".bookmarkContainer {\n    color: white;\n    border-radius: 20px;\n    border-right: 1px solid rgb(250, 208, 0);\n    border-bottom: 1px solid rgb(250, 208, 0);\n    box-shadow: 25px 14px 100px rgb(69, 73, 102);\n    background: rgb(58, 63, 99);\n    width: 475px;\n    padding: 1rem;\n    display: flex;\n    justify-content: space-between;\n    transition: .4s ease;\n    margin: 1rem 0;\n    position: relative;\n    overflow: hidden;\n\n    .bookmark {\n        width: 500px;\n        overflow: hidden;\n        white-space: no-wrap;\n        font-size: 1.2rem;\n        color: #000;\n\n        .titleInput {\n            width: 90%;\n            border: none;\n            background: transparent;\n            color: #FFF;\n            font-size: 20px;\n            letter-spacing: 2px;\n            cursor: pointer;\n\n            &:focus {\n                background-color: aliceblue;\n                color: rgb(41, 46, 74);\n                outline: none;\n            }\n        }\n        .urlInput {\n            width: 90%;\n            border: none;\n            background: transparent;\n            color: grey;\n            font-size: 16px;\n            letter-spacing: 2px;\n            cursor: pointer; \n\n            &:focus {\n                background-color: aliceblue;\n                color: rgb(41, 46, 74);\n                outline: none;\n            }\n        }\n    }\n\n    .button {\n        color: rgb(250, 208, 0);\n        background: linear-gradient(0.38turn, rgb(41, 46, 74), rgb(58,63,99), rgb(87, 93, 138));\n        border: 1px solid rgb(58,63,99);\n        height: 45px;\n        text-transform: uppercase;\n        cursor: pointer;\n        padding: 0.25rem 1rem;\n        font-size: 1rem;\n        font-weight: 700;\n        display: inline-block;\n        margin-right: 3rem;\n        border-radius: 30px;\n        transition: .3s ease;\n        z-index: 2;\n\n        &:hover {\n            background: rgba(25, 5, 58, 0.8);\n            color: ghostwhite;\n            border: 2px;\n            box-shadow: 0 2px 5px rgba(23, 5, 58, 0.5);\n            transform: scale(1.1);\n            transition: .3s ease;\n            box-shadow: none;\n        }\n\n\n    }\n\n    .visitBtnContainer{\n        transform: rotate(-90deg);\n        width: 90px;\n        height: 55px;\n        margin: 0;\n        display: flex;\n        justify-content: center;\n        align-items: center;\n        position: absolute;\n        bottom: 12px;\n        right: -19px;\n        .visitBtn {\n            text-decoration: none;\n            font-size: 14px;\n            font-weight: bold;\n            color: rgb(58, 63, 99);\n        }\n\n        &:hover {\n            cursor: pointer;\n        }\n    }\n\n\n    .animation {\n        width: 10px;\n        height: 10px;\n        border-radius: 50%;\n        background-color: transparent;\n        border: 2px solid rgb(250, 208, 0);\n        position: absolute;\n        top: 50%;\n        right: calc(100% + 40px);\n        transform: translate(-50%, -50%);\n        z-index: 1;\n        transition: .5s ease;\n\n        .bookmarkContainer:hover & {\n            transform: scale(100);\n        }\n    }\n    \n    &:hover {\n        box-shadow: 0 0 10px solid white;\n        transform: scale(1.1);\n        transition: .4s ease;\n\n        .animation {\n            transform: scale(100);\n            z-index: -1000;\n        }\n    }\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"bookmarkContainer": `k6ypUdZIToQcx5q02lTg`,
@@ -938,4 +956,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.7549fad8fad99d717559726046a2ac68.js.map
+//# sourceMappingURL=App.b815101d7b11edccfa4b12bbaa0dcc98.js.map

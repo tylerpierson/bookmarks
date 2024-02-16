@@ -22,22 +22,34 @@
         color: #000;
 
         .titleInput {
-            width: 100%;
+            width: 90%;
             border: none;
             background: transparent;
             color: #FFF;
             font-size: 20px;
             letter-spacing: 2px;
             cursor: pointer;
+
+            &:focus {
+                background-color: aliceblue;
+                color: rgb(41, 46, 74);
+                outline: none;
+            }
         }
         .urlInput {
-            width: 100%;
+            width: 90%;
             border: none;
             background: transparent;
             color: grey;
             font-size: 16px;
             letter-spacing: 2px;
             cursor: pointer; 
+
+            &:focus {
+                background-color: aliceblue;
+                color: rgb(41, 46, 74);
+                outline: none;
+            }
         }
     }
 

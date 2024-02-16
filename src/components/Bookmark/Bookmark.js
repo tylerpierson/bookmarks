@@ -1,35 +1,51 @@
-import React from 'react';
-import styles from './Bookmark.module.scss';
-import { useState } from 'react'
+import React, { useState } from 'react'
+import styles from './Bookmark.module.scss'
 
-export default function Bookmark({ bookmark, deleteAction }) {
+export default function Bookmark({ bookmark, deleteAction, updateBookmark }) {
     const [title, setTitle] = useState(bookmark.title)
     const [url, setUrl] = useState(bookmark.url)
 
     const handleTitleChange = (e) => {
-        console.log(e.target.value)
         setTitle(e.target.value)
     }
 
     const handleUrlChange = (e) => {
-        console.log(e.target.value)
         setUrl(e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+        if(e.key === 'Enter') {
+            updateBookmark(bookmark._id, { [e.target.name]: e.target.value })
+            e.target.blur()
+        }
     }
 
     const handleClick = (e) => {
         if (!e.target.closest('button')) {
-            window.open(bookmark.url, '_blank');
+            window.open(bookmark.url, '_blank')
         }
     }
 
     return (
         <div className={styles.bookmarkContainer}>
-            <div className={styles.bookmark}>
-                <input className={styles.titleInput} value={title} onChange={handleTitleChange} />
+            <form className={styles.bookmark}>
+                <input
+                    name='title'
+                    className={styles.titleInput}
+                    value={title}
+                    onChange={handleTitleChange}
+                    onKeyDown={handleSubmit}
+                />
                 <div className={styles.bookmarkUrl}>
-                <input className={styles.urlInput} value={url} onChange={handleUrlChange} />
+                    <input
+                        name='url'
+                        className={styles.urlInput}
+                        value={url}
+                        onChange={handleUrlChange}
+                        onKeyDown={handleSubmit}
+                    />
                 </div>
-            </div>
+            </form>
             <div>
                 <button className={styles.button} onClick={() => deleteAction(bookmark._id)}>
                     Delete
@@ -42,5 +58,5 @@ export default function Bookmark({ bookmark, deleteAction }) {
                 <div className={styles.animation}></div>
             </div>
         </div>
-    );
+    )
 }

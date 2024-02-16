@@ -1,22 +1,18 @@
-import styles from './BookmarkList.module.scss';
-import Bookmark from '../Bookmark/Bookmark';
+import styles from './BookmarkList.module.scss'
+import Bookmark from '../Bookmark/Bookmark'
 
 export default function BookmarkList({
     newBookmark,
     createBookmark,
     setNewBookmark,
     bookmarks,
-    updateBookmark,
-    deleteBookmark
+    deleteBookmark,
+    updateBookmark
 }) {
     function handleCreateBookmark() {
         if (newBookmark.title && newBookmark.url && newBookmark.url !== 'http://' && newBookmark.url !== 'https://') {
-            createBookmark();
+            createBookmark()
         }
-    }
-
-    function handleUpdateBookmark(bookmarkId) {
-        updateBookmark(bookmarkId);
     }
 
     return (
@@ -61,7 +57,7 @@ export default function BookmarkList({
                             key={bookmark._id}
                             bookmark={bookmark}
                             deleteAction={deleteBookmark}
-                            editAction={updateBookmark}
+                            updateBookmark={updateBookmark}
                         />
                     ))}
                 </div>
