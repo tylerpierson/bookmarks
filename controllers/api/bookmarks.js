@@ -1,5 +1,5 @@
+require('dotenv').config()
 const Bookmark = require('../../models/bookmark')
-
 
 module.exports = {
     create,

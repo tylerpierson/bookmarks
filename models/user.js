@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose')
 const bcrypt = require('bcrypt')
+const crypto = require('crypto')
 const SALT_ROUNDS = 6
 
 const userSchema = new Schema ({
@@ -19,8 +20,8 @@ const userSchema = new Schema ({
 
 userSchema.pre('save', async function (next) {
     if(!this.isModified('password')) return next()
-
-    this.password = await bcrypt.hash(this.password, SALT_ROUNDS)
+    const password = crypto.createHmac('sha256', process.env.SECRET).update(this.password).split('').reverse().join('')
+    this.password = await bcrypt.hash(password, SALT_ROUNDS)
 })
 
 module.exports = model('User', userSchema)
