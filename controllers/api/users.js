@@ -1,6 +1,6 @@
 require('dotenv').config()
 const jwt = require('jsonwebtoken')
-const User = require('../../models/User')
+const User = require('../../models/user')
 const bcrypt = require('bcrypt')
 
 // signup
@@ -34,7 +34,7 @@ const login = async (req, res, next) => {
 
 const getBookmarkByUser = async (req, res, next) => {
     try {
-        const user = await User.findOne({ email: req.body.email }).populate('bookmarks').sort('bookmarks.createdAt').exec()
+        const user = await User.findOne({ email: res.locals.data.email }).populate('bookmarks').sort('bookmarks.createdAt').exec()
         const bookmarks = user.bookmarks
         res.locals.data.bookmarks = bookmarks
         next()

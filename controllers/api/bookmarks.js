@@ -1,21 +1,14 @@
 require('dotenv').config()
 const Bookmark = require('../../models/bookmark')
-
-// jsonBookmarks jsonBookmark
-// viewControllers
-function jsonBookmark (_, res) {
-    res.json(res.locals.data.bookmark)
-}
-
-function jsonBookmarks (_, res) {
-    res.json(res.locals.data.bookmarks)
-}
+const User = require('../../models/user')
 
 /****** C - Create *******/
 async function create(req, res, next){
     try {
         const bookmark = await Bookmark.create(req.body)
-        console.log(bookmark)
+        const user = await User.findOne({ email: res.locals.data.email })
+        user.bookmarks.addToSet(bookmark)
+        await user.save()
         res.locals.data.bookmark = bookmark
         next()
     } catch (error) {
@@ -57,6 +50,13 @@ async function destroy(req ,res,next) {
     }
 }
 
+// jsonBookmarks jsonBookmark
+// viewControllers
+
+function respondWithBookmarks (_, res) {
+    res.json(res.locals.data.bookmarks)
+}
+
 const respondWithBookmark = (req, res) => {
     res.json(res.locals.data.bookmark)
 }
@@ -66,7 +66,6 @@ module.exports = {
     index,
     update,
     destroy,
-    jsonBookmarks,
-    jsonBookmark,
+    respondWithBookmarks,
     respondWithBookmark
 }

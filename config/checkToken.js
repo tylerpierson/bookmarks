@@ -12,7 +12,6 @@ module.exports = (req, res, next) => {
             req.exp = err ? null : new Date(decoded.exp * 1000)
             res.locals.data.email = decoded.user.email
         })
-        
         return next()
     } else {
         req.user = null
