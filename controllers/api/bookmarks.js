@@ -1,15 +1,6 @@
 require('dotenv').config()
 const Bookmark = require('../../models/bookmark')
 
-module.exports = {
-    create,
-    index,
-    update,
-    destroy,
-    jsonBookmarks,
-    jsonBookmark
-}
-
 // jsonBookmarks jsonBookmark
 // viewControllers
 function jsonBookmark (_, res) {
@@ -64,4 +55,18 @@ async function destroy(req ,res,next) {
     } catch (error) {
         res.status(400).json({ msg: error.message })
     }
+}
+
+const respondWithBookmark = (req, res) => {
+    res.json(res.locals.data.bookmark)
+}
+
+module.exports = {
+    create,
+    index,
+    update,
+    destroy,
+    jsonBookmarks,
+    jsonBookmark,
+    respondWithBookmark
 }
