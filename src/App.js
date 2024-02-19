@@ -11,6 +11,48 @@ export default function App(){
         url: ''
     })
 
+    const [credentials, setCredentials] = useState({
+        email: '',
+        password: '',
+        name: ''
+    })
+    const [token, setToken] = useState('')
+    // Login
+    const login = async () => {
+        try {
+            const response = await fetch('/api/users/login', {
+                method: 'Post',
+                header: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: credentials.email, password: credentials.password})
+            })
+            const tokenResponse = await response.json()
+            setToken(tokenResponse)
+            localStorage.setItem('token', JSON.stringify(tokenResponse))
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    // Signup
+    const signup = async () => {
+        try {
+            const response = await fetch('/api/users', {
+                method: 'Post',
+                header: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ ...credentials })
+            })
+            const tokenResponse = await response.json()
+            setToken(tokenResponse)
+            localStorage.setItem('token', JSON.stringify(tokenResponse))
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     //createBookmarks
     const createBookmark = async () => {
         const body = {...newBookmark}
