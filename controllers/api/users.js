@@ -33,7 +33,7 @@ const login = async (req, res, next) => {
     }
 }
 
-const getBookmarkByUser = async (req, res, next) => {
+const getBookmarksByUser = async (req, res, next) => {
     try {
         const user = await User.findOne({ email: res.locals.data.email }).populate('bookmarks').sort('bookmarks.createdAt').exec()
         const bookmarks = user.bookmarks
@@ -59,7 +59,7 @@ const respondWithBookmarks = (req, res) => {
 module.exports = {
     signUp,
     login,
-    getBookmarkByUser,
+    getBookmarksByUser,
     respondWithToken,
     respondWithUser,
     respondWithBookmarks

@@ -19,6 +19,6 @@ router.post('/login', userCtrl.login, userCtrl.respondWithToken)
 /api/users/bookmarks
 Get Bookmarks by User
 */
-router.get('/bookmarks', checkToken, userCtrl.getBookmarkByUser, userCtrl.respondWithBookmarks)
+router.get('/bookmarks', checkToken, ensureLoggedIn, userCtrl.getBookmarksByUser, userCtrl.respondWithBookmarks)
 
 module.exports = router

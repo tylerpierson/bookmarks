@@ -6,9 +6,7 @@ const User = require('../../models/user')
 async function create(req, res, next){
     try {
         const bookmark = await Bookmark.create(req.body)
-        const user = await User.findOne({ email: res.locals.data.email })
-        user.bookmarks.addToSet(bookmark)
-        await user.save()
+
         res.locals.data.bookmark = bookmark
         next()
     } catch (error) {

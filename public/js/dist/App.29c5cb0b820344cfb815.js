@@ -31,21 +31,64 @@ function App() {
     title: '',
     url: ''
   });
+  const [credentials, setCredentials] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    email: '',
+    password: '',
+    name: ''
+  });
+  const [token, setToken] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  // Login
+  const login = async () => {
+    try {
+      const response = await fetch('/api/users/login', {
+        method: 'Post',
+        header: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: credentials.email,
+          password: credentials.password
+        })
+      });
+      const tokenResponse = await response.json();
+      setToken(tokenResponse);
+      localStorage.setItem('token', JSON.stringify(tokenResponse));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Signup
+  const signup = async () => {
+    try {
+      const response = await fetch('/api/users', {
+        method: 'Post',
+        header: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(_objectSpread({}, credentials))
+      });
+      const tokenResponse = await response.json();
+      setToken(tokenResponse);
+      localStorage.setItem('token', JSON.stringify(tokenResponse));
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   //createBookmarks
   const createBookmark = async () => {
-    const body = _objectSpread({}, newBookmark);
     try {
       const response = await fetch('/api/bookmarks', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Authorization: "Bearer ".concat(token)
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify(_objectSpread({}, newBookmark))
       });
-      const createdBookmark = await response.json();
-      const bookmarksCopy = [createdBookmark, ...bookmarks];
-      setBookmarks(bookmarksCopy);
+      const data = await response.json();
+      setBookmarks([data, ...bookmarks]);
       setNewBookmark({
         title: '',
         url: ''
@@ -54,6 +97,8 @@ function App() {
       console.error(error);
     }
   };
+
+  //
 
   // UpdateBookmark
   const updateBookmark = async (id, bookmarkToUpdate) => {
@@ -365,14 +410,13 @@ ___CSS_LOADER_EXPORT___.push([module.id, `body {
   color: white;
   font-size: 2rem;
   letter-spacing: 2px;
-  overflow-y: hidden;
 }
 body .IMqMrT2eGOGeFiLbCAGg {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}`, "",{"version":3,"sources":["webpack://./src/App.module.scss"],"names":[],"mappings":"AAAA;EACI,2BAAA;EACA,WAAA;EACA,aAAA;EACA,SAAA;EACA,UAAA;EACA,uBAAA;EACA,YAAA;EACA,eAAA;EACA,mBAAA;EACA,kBAAA;AACJ;AAAI;EACI,WAAA;EACA,aAAA;EACA,sBAAA;EACA,8BAAA;AAER","sourcesContent":["body {\n    background: rgb(41, 46, 74);\n    width: 100%;\n    height: 100vh;\n    margin: 0;\n    padding: 0;\n    font-family: sans-serif;\n    color: white;\n    font-size: 2rem;\n    letter-spacing: 2px;\n    overflow-y: hidden;\n    .App {\n        width: 100%;\n        display: flex;\n        flex-direction: column;\n        justify-content: space-between;\n    }\n}\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/App.module.scss"],"names":[],"mappings":"AAAA;EACI,2BAAA;EACA,WAAA;EACA,aAAA;EACA,SAAA;EACA,UAAA;EACA,uBAAA;EACA,YAAA;EACA,eAAA;EACA,mBAAA;AACJ;AAAI;EACI,WAAA;EACA,aAAA;EACA,sBAAA;EACA,8BAAA;AAER","sourcesContent":["body {\n    background: rgb(41, 46, 74);\n    width: 100%;\n    height: 100vh;\n    margin: 0;\n    padding: 0;\n    font-family: sans-serif;\n    color: white;\n    font-size: 2rem;\n    letter-spacing: 2px;\n    .App {\n        width: 100%;\n        display: flex;\n        flex-direction: column;\n        justify-content: space-between;\n    }\n}\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"App": `IMqMrT2eGOGeFiLbCAGg`
@@ -956,4 +1000,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.f569711aacbb3b3e4e9b5c6de1f99eea.js.map
+//# sourceMappingURL=App.js.map

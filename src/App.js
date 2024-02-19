@@ -55,18 +55,17 @@ export default function App(){
 
     //createBookmarks
     const createBookmark = async () => {
-        const body = {...newBookmark}
         try {
             const response = await fetch('/api/bookmarks', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
                 },
-                body: JSON.stringify(body)
+                body: JSON.stringify({...newBookmark})
             })
-            const createdBookmark = await response.json()
-            const bookmarksCopy = [createdBookmark,...bookmarks]
-            setBookmarks(bookmarksCopy)
+            const data = await response.json()
+            setBookmarks([data,...bookmarks])
             setNewBookmark({
                 title: '',
                 url: ''
@@ -75,6 +74,8 @@ export default function App(){
             console.error(error)
         }
     }
+
+    //
 
     // UpdateBookmark
     const updateBookmark = async (id, bookmarkToUpdate) => {
